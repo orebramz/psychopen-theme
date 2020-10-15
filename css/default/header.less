@@ -1,0 +1,151 @@
+.pkp_structure_page {
+  min-height: 100vh;
+  position: relative;
+}
+
+#psychOpenPageHeader {
+  color: white;
+  padding: @po-banner-padding;
+  background-color: @po-banner-bg-color;
+}
+
+.exploreLinks {
+  .showHideLG();
+
+  a {
+    font-size: @po-banner-font-size;
+    text-decoration: none;
+    color: @font-color-light;
+
+    &:visited {
+      font-size: @po-banner-font-size;
+      text-decoration: none;
+      color: @font-color-light;
+    }
+  }
+}
+
+
+.btn-outline-psychopen {
+  border-color: @primary-color;
+  color: @primary-color;
+
+  &:hover {
+    border-color: @secondary-color;
+    color: @secondary-color;
+  }
+}
+
+#headerNavigationContainer {
+  padding: 0;
+}
+
+#psychOpenLogo {
+  position: relative;
+  bottom: 4px;
+  height: @po-banner-image-height;
+}
+
+#providedLogo {
+  height: @po-banner-image-height;
+  .showHideLG();
+}
+
+#pageHeaderLogo {
+  background: @logo-bg-color;
+
+  img {
+    max-height: @logo-image-height;
+    min-height: auto;
+    max-width: 100%;
+    margin-top: @logo-image-margin-top;
+    margin-bottom: @logo-image-margin-bottom;
+  }
+}
+
+#mainNavbar {
+  background: @navbar-bg-color;
+  padding: @navbar-padding;
+
+  a {
+    font-size: @navbar-font-size;
+  }
+
+  li > a {
+    color: @navbar-font-color;
+    margin: @navbar-item-margin;
+  }
+
+  li:hover {
+    background-color: @navbar-hoover-color;
+  }
+
+  a:hover {
+    background-color: @navbar-hoover-color;
+    color: @navbar-hoover-font-color;
+  }
+}
+
+
+#searchIcon {
+  color: @search-font-color;
+  background-color: @search-background-color;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover{
+    color: @search-font-color-hover;
+    background-color: @search-background-color-hover;
+  }
+}
+
+
+.search-box {
+  display: none;
+  background: @navbar-bg-color;
+}
+
+.search-box-input {
+  outline: none;
+  font-size: 14px;
+  border: 1px solid @secondary-color;
+  padding: 5px 20px;
+  border-radius: 50px;
+  margin-bottom: 5px !important;
+  width: 100%;
+}
+
+#navigationUser {
+  .dropdown-menu {
+    z-index: 1999;
+  }
+
+  .dropdown-item {
+    font-size: @navbar-font-size;
+
+    &:hover {
+      background-color: @navbar-hoover-color;
+      color: @navbar-hoover-font-color;
+    }
+  }
+}
+
+.pkp_structure_content {
+  min-height: @main-content-min-height;
+
+  a {
+    color: @content-link-color;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: @content-link-color-hover;
+    text-decoration: none;
+  }
+}
+
+/*.pkp_structure_main{
+  padding-top: 20px;
+  box-shadow: 1px 0px 1px 1px #888888;
+}*/
+

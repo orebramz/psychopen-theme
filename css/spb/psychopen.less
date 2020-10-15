@@ -1,0 +1,43 @@
+@import "settings";
+@import "../default/header";
+@import "../default/content";
+@import "../default/social_share";
+@import "../default/footer";
+
+.overwriteHeaderLogo {
+  background: url('/public/journals/15/SPB-home.png') no-repeat center !important;
+  background-size: cover !important;
+
+  img {
+    max-height: 240px !important;
+    margin-top: 25px !important;
+    margin-bottom: 0 !important;
+  }
+
+  .logo-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    padding-left: 0 !important;
+  }
+}
+
+.pkp_page_index #mainNavbar,
+.pkp_page_index .search-box{
+  background: none !important;
+}
+
+.pkp_page_index #mainNavbar .navbar-container,
+.pkp_page_index .search-box .container{
+  background: @navbar-bg-color !important;
+}
+
+
+.custom-page-content {
+  h1 {
+    font-size: 1.8em !important;
+  }
+  h2 {
+    font-size: 1.3em !important;
+  }
+}

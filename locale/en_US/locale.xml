@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+<locale name="en_US" full_name="U.S. English">
+    <message key="plugins.themes.psychOpen.name">PsychOpen Default Theme</message>
+    <message key="plugins.themes.psychOpen.description">The PsychOpen Default Theme</message>
+    <message key="plugins.blocks.issues.title">Issue Block</message>
+    <message key="plugins.blocks.issues.desc">This plugin provides the IssueOverview in the sidebar.</message>
+    <!-- OPTIONS -->
+    <message key="plugins.themes.psychOpen.option.scheme">Scheme selection</message>
+    <message key="plugins.themes.psychOpen.option.scheme.desc">Selection of the style for the journal</message>
+    <message key="plugins.themes.psychOpen.option.scheme.cpe">Clinical Psychology in Europe (CPE)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.default">Default</message>
+    <message key="plugins.themes.psychOpen.option.scheme.ejop">Europe's Journal for Psychology (EJOP)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.jbdgm">Yearbook of Music Psychology (JBDGM)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.ijpr">Interpersona (IJPR)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.meth">Methodology (METH)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.spb">Social Psychological Bulletin (SPB)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.ps">Personality Science (PS)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.sotrap">Sexual Offending (SOTRAP)</message>
+    <message key="plugins.themes.psychOpen.option.scheme.qcmb">Quantitative and Computational Methods in Behavioral Sciences (QCMB)</message>
+    <message key="plugins.themes.psychOpen.option.header.logo">Header Image</message>
+    <message key="plugins.themes.psychOpen.option.header.logo.desc">Upload a header logo into the OJS public folder and enter the name of the file here.</message>
+    <message key="plugins.themes.psychOpen.option.issueThumb">Issue Thumbnail</message>
+    <message key="plugins.themes.psychOpen.option.issueThumb.desc">Optional image for all issues without own image in archive.</message>
+    <message key="plugins.themes.psychOpen.option.sidebar.label">Sidebar:</message>
+    <message key="plugins.themes.psychOpen.option.sidebar.desc">Show/hide the sidebar for the entire journal.</message>
+    <message key="plugins.themes.psychOpen.option.sidebar.enable">Show</message>
+    <message key="plugins.themes.psychOpen.option.sidebar.disable">Hide</message>
+    <message key="plugins.themes.psychOpen.option.section.header.issue">Show/Hide sections as headings.</message>
+    <message key="plugins.themes.psychOpen.option.section.header.issue.desc">Shows or hides the sections as headings in the issues overview.</message>
+    <message key="plugins.themes.psychOpen.option.recent.articles">Journal index: recent articles</message>
+    <message key="plugins.themes.psychOpen.option.recent.articles.desc">Show the most recently published articles on the index page.(max. 5)</message>
+    <message key="plugins.themes.psychOpen.option.recent.issue">Journal index: issue</message>
+    <message key="plugins.themes.psychOpen.option.recent.issue.desc">Show the last issue with all articles on the index page</message>
+    <message key="plugins.themes.psychOpen.option.recent.announcements">Journal index: announcements</message>
+    <message key="plugins.themes.psychOpen.option.recent.announcements.desc">Show announcements on the index page</message>
+    <message key="plugins.themes.psychOpen.option.section.header.issue.view">Issue grouping</message>
+    <message key="plugins.themes.psychOpen.option.section.header.issue.view.desc">This setting is used to combine the issues. A grouping by year or volume is possible. This is used
+        for the overview in the sidebar and in the archive!
+    </message>
+    <message key="plugins.themes.psychOpen.option.sidebar.issue.unsorted">ungrouped</message>
+    <message key="plugins.themes.psychOpen.option.sidebar.issue.year">by year</message>
+    <message key="plugins.themes.psychOpen.option.sidebar.issue.volume">by volume</message>
+    <!--Header Strings-->
+    <message key="plugins.themes.psychOpen.header.explore">Explore PsychOpen Journals</message>
+    <message key="plugins.themes.psychOpen.header.about">About PsychOpen</message>
+    <message key="plugins.themes.psychOpen.header.lang.selected">EN</message>
+    <message key="plugins.themes.psychOpen.header.lang.select.option">German</message>
+    <!-- ARIA Messages-->
+    <message key="plugins.themes.psychOpen.aria.lang.select">Language selection</message>
+    <message key="plugins.themes.psychOpen.aria.title">Title</message>
+    <message key="plugins.themes.psychOpen.aria.subtitle">Subtitle</message>
+    <message key="plugins.themes.psychOpen.aria.transtitle">Translated title</message>
+    <message key="plugins.themes.psychOpen.aria.authors">Authors</message>
+    <message key="plugins.themes.psychOpen.aria.article.main">Article</message>
+    <message key="plugins.themes.psychOpen.aria.article.sidebar">Article information</message>
+    <message key="plugins.themes.psychOpen.aria.article.sidebar.download">Article reading view or download</message>
+    <message key="plugins.themes.psychOpen.aria.article.published">Published at</message>
+    <message key="plugins.themes.psychOpen.aria.article.doi">Digital Object Identifier (DOI)</message>
+    <message key="plugins.themes.psychOpen.aria.category.desc">Category description</message>
+    <!-- Journal Index -->
+    <message key="plugins.themes.psychOpen.journal.recent.articles">Recent Articles</message>
+    <!-- Article Details -->
+    <message key="plugins.themes.psychOpen.article.details.views">Views</message>
+    <message key="plugins.themes.psychOpen.article.details.altmetric">Altmetric</message>
+    <message key="plugins.themes.psychOpen.article.details.plumx">PlumX</message>
+    <message key="plugins.themes.psychOpen.article.details.abstract">Abstract</message>
+    <message key="plugins.themes.psychOpen.article.details.dimensions">Dimensions</message>
+    <message key="plugins.themes.psychOpen.article.views">Views</message>
+    <message key="plugins.themes.psychOpen.article.views.total">Total</message>
+    <message key="plugins.themes.psychOpen.article.view.full">Full-screen</message>
+    <message key="plugins.themes.psychOpen.article.view.full.close">Close full-screen</message>
+    <!-- Category -->
+    <message key="plugins.themes.psychOpen.categories.sub">Subcategories</message>
+    <message key="plugins.themes.psychOpen.categories.parent">Parent category</message>
+    <message key="plugins.themes.psychOpen.categories.heading">Related articles (number: {$numTitles})</message>
+    <!-- Register & Login -->
+    <message key="plugins.themes.psychOpen.user.first.name">Given name</message>
+    <message key="plugins.themes.psychOpen.user.middle.name">Middle name</message>
+    <message key="plugins.themes.psychOpen.user.last.name">Surname</message>
+    <message key="plugins.themes.psychOpen.register.privacy">Privacy Policy and Notifications</message>
+    <message key="plugins.themes.psychOpen.register.user">User details</message>
+    <message key="plugins.themes.psychOpen.register.login">Login details</message>
+    <!-- Footer -->
+    <message key="plugins.themes.psychOpen.footer.issn">ISSN</message>
+    <message key="plugins.themes.psychOpen.footer.print">Print</message>
+    <message key="plugins.themes.psychOpen.footer.online">Online</message>
+    <message key="plugins.themes.psychOpen.footer.license.pre">Unless otherwise noted, site content is licensed under a</message>
+    <message key="plugins.themes.psychOpen.footer.license.link">Creative Commons Attribution 4.0 International License. (CC BY 4.0)</message>
+    <message key="plugins.themes.psychOpen.footer.links">Links</message>
+    <!-- Submission -->
+    <message key="plugins.themes.psychOpen.submission.new">New submission</message>
+    <!---->
+    <message key="plugins.themes.psychOpen.citations">Citations</message>
+    <message key="plugins.themes.psychOpen.impact">Impact</message>
+    <message key="search.no.Results">No search results found! Please enter a search term or phrase into the search field!</message>
+</locale>
