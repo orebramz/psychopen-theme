@@ -1,6 +1,7 @@
 <?php
 import('lib.pkp.classes.plugins.ThemePlugin');
-require_once 'classes/XML_Parser.php';
+require_once('plugins/themes/psychopen/classes/XML_Parser.php');
+
 
 /**
  * PsychOpenThemePlugin
@@ -56,163 +57,174 @@ class PsychOpenThemePlugin extends ThemePlugin
 	 */
 	private $external_styles = array(
 		'opensans-cdn' => 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap',
-		'roboto-cdn' => 'https://fonts.googleapis.com/css?family=Roboto',
-		'slabo27px-cdn' => 'https://fonts.googleapis.com/css?family=Slabo+27px',
 		'awesome-cdn' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css',
 		'bootstrap' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
 	);
 
 	/**
 	 * Initiates the template and loads all required data into the template manager.
+	 * @throws Exception
 	 */
 	public function init()
 	{
-		// add external styles to template
-		foreach ($this->external_styles as $k => $v) {
-			$this->addStyle($k, $v, array('baseUrl' => ''));
-		}
-		// add external scripts to template
-		/*foreach ($this->external_scripts as $k => $v) {
-			$this->addScript($k, $v, array('baseUrl' => ''));
-		}*/
-		// add custom js to template
-		/*$this->addScript('cookieConsent', 'js/cookieConsentBannerStudy.min.js');*/
-		$this->addScript('cookieConsent', 'https://lifp.de/assets/cookieConsentBannerStudy.min.js', array('baseUrl' => ''));
-		$this->addScript('default', 'js/default.js');
-		/*$this->addScript('psychopen', 'js/psychopen.js');*/
 
-		// add primary user to template (displayed in header)
-		$this->addMenuArea(array('primary', 'user'));
-		// template option: color scheme/style selector
-		$this->addOption(
-			'colorSchemeSelect',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.scheme',
-				'description' => 'plugins.themes.psychOpen.option.scheme.desc',
-				'options' => array(
-					'cpe' => 'plugins.themes.psychOpen.option.scheme.cpe',
-					'default' => 'plugins.themes.psychOpen.option.scheme.default',
-					'ejop' => 'plugins.themes.psychOpen.option.scheme.ejop',
-					'ijpr' => 'plugins.themes.psychOpen.option.scheme.ijpr',
-					'meth' => 'plugins.themes.psychOpen.option.scheme.meth',
-					'ps' => 'plugins.themes.psychOpen.option.scheme.ps',
-					'qcmb' => 'plugins.themes.psychOpen.option.scheme.qcmb',
-					'sotrap' => 'plugins.themes.psychOpen.option.scheme.sotrap',
-					'spb' => 'plugins.themes.psychOpen.option.scheme.spb',
-					'jbdgm' => 'plugins.themes.psychOpen.option.scheme.jbdgm',
-				),
-			)
-		);
-		// choose css style by selection above. the folder name must match the option key. default is fallback option if none selected
-		if (!empty($this->getOption('colorSchemeSelect'))) {
-			$this->addStyle('psychopen', 'css/'.$this->getOption('colorSchemeSelect').'/psychopen.less');
-		} else {
-			$this->addStyle('psychopen', 'css/default/psychopen.less');
+		if ($this->getEnabled()) {
+			// add external styles to template
+			foreach ($this->external_styles as $k => $v) {
+				$this->addStyle($k, $v, array('baseUrl' => ''));
+			}
+			// add external scripts to template
+			/*foreach ($this->external_scripts as $k => $v) {
+				$this->addScript($k, $v, array('baseUrl' => ''));
+			}*/
+			// add custom js to template
+			/*$this->addScript('cookieConsent', 'js/cookieConsentBannerStudy.min.js');*/
+			$this->addScript('cookieConsent', 'https://lifp.de/assets/cookieConsentBannerStudy.min.js', array('baseUrl' => ''));
+			$this->addScript('default', 'js/default.js');
+			/*$this->addScript('psychopen', 'js/psychopen.js');*/
+
+			// add primary user to template (displayed in header)
+			$this->addMenuArea(array('primary', 'user'));
+			// template option: color scheme/style selector
+			$this->addOption(
+				'colorSchemeSelect',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.scheme',
+					'description' => 'plugins.themes.psychOpen.option.scheme.desc',
+					'options' => array(
+						'cpe' => 'plugins.themes.psychOpen.option.scheme.cpe',
+						'default' => 'plugins.themes.psychOpen.option.scheme.default',
+						'ejop' => 'plugins.themes.psychOpen.option.scheme.ejop',
+						'ijpr' => 'plugins.themes.psychOpen.option.scheme.ijpr',
+						'meth' => 'plugins.themes.psychOpen.option.scheme.meth',
+						'ps' => 'plugins.themes.psychOpen.option.scheme.ps',
+						'qcmb' => 'plugins.themes.psychOpen.option.scheme.qcmb',
+						'sotrap' => 'plugins.themes.psychOpen.option.scheme.sotrap',
+						'spb' => 'plugins.themes.psychOpen.option.scheme.spb',
+						'jbdgm' => 'plugins.themes.psychOpen.option.scheme.jbdgm',
+					),
+				)
+			);
+			// choose css style by selection above. the folder name must match the option key. default is fallback option if none selected
+			if (!empty($this->getOption('colorSchemeSelect'))) {
+				$this->addStyle('psychopen', 'css/'.$this->getOption('colorSchemeSelect').'/psychopen.less');
+			} else {
+				$this->addStyle('psychopen', 'css/default/psychopen.less');
+			}
+			// template option: color scheme/style selector
+			$this->addOption(
+				'headerLogo',
+				'text',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.header.logo',
+					'description' => 'plugins.themes.psychOpen.option.header.logo.desc',
+				)
+			);
+			// template option: thumbnail for all issues (maybe for a better look of the archive)
+			$this->addOption(
+				'issueThumb',
+				'text',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.issueThumb',
+					'description' => 'plugins.themes.psychOpen.option.issueThumb.desc',
+				)
+			);
+			// template option: load sidebar on journal index page
+			$this->addOption(
+				'loadSideBar',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.sidebar.label',
+					'description' => 'plugins.themes.psychOpen.option.sidebar.desc',
+					'options' => array(
+						'index' => 'plugins.themes.psychOpen.option.sidebar.enable',
+						'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
+					),
+				)
+			);
+			// template option: issues can be sorted by year or volume. this is used for the issue sidebar plugin and the archive
+			$this->addOption(
+				'issueViewType',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.section.header.issue.view',
+					'description' => 'plugins.themes.psychOpen.option.section.header.issue.view.desc',
+					'options' => array(
+						'noSort' => 'plugins.themes.psychOpen.option.sidebar.issue.unsorted',
+						'sortByYear' => 'plugins.themes.psychOpen.option.sidebar.issue.year',
+						'sortByVolume' => 'plugins.themes.psychOpen.option.sidebar.issue.volume',
+					),
+				)
+			);
+			/* enable/disable section header on archive*/
+			$this->addOption(
+				'loadSectionHeaderIssue',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.section.header.issue',
+					'description' => 'plugins.themes.psychOpen.option.section.header.issue.desc',
+					'options' => array(
+						'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
+						'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
+					),
+				)
+			);
+			// template option: enable/disable recent Articles on JournalPage
+			$this->addOption(
+				'loadRecentArticles',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.recent.articles',
+					'description' => 'plugins.themes.psychOpen.option.recent.articles.desc',
+					'options' => array(
+						'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
+						'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
+					),
+				)
+			);
+			// template option: enable/disable latest issue on JournalPage
+			$this->addOption(
+				'showLatestIssue',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.recent.issue',
+					'description' => 'plugins.themes.psychOpen.option.recent.issue.desc',
+					'options' => array(
+						'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
+						'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
+					),
+				)
+			);
+			// template option: enable/disable latest announcements on JournalPage
+			$this->addOption(
+				'showLatestAnnouncements',
+				'radio',
+				array(
+					'label' => 'plugins.themes.psychOpen.option.recent.announcements',
+					'description' => 'plugins.themes.psychOpen.option.recent.announcements.desc',
+					'options' => array(
+						'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
+						'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
+					),
+				)
+			);
+			$this->addOption(
+				'journalDescription',
+				'FieldTextarea',
+				[
+					'label' => __('plugins.themes.psychOpen.option.journalDescription'),
+					'description' => __('plugins.themes.psychOpen.option.journalDescription.desc'),
+				]
+			);
+			// Hook which loads more data to the template manager
+			HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
+			HookRegistry::register('TemplateManager::display', array($this, 'loadTemplateData'));
+			// loads the IssueBlock as BlockPlugin to make it available and sortable in the sidebar
+			$this->import('IssueBlockPlugin');
+			$blockPlugin = new IssueBlockPlugin();
+			PluginRegistry::register('blocks', $blockPlugin, $this->getPluginPath());
 		}
-		// template option: color scheme/style selector
-		$this->addOption(
-			'headerLogo',
-			'text',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.header.logo',
-				'description' => 'plugins.themes.psychOpen.option.header.logo.desc',
-			)
-		);
-		// template option: thumbnail for all issues (maybe for a better look of the archive)
-		$this->addOption(
-			'issueThumb',
-			'text',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.issueThumb',
-				'description' => 'plugins.themes.psychOpen.option.issueThumb.desc',
-			)
-		);
-		// template option: load sidebar on journal index page
-		$this->addOption(
-			'loadSideBar',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.sidebar.label',
-				'description' => 'plugins.themes.psychOpen.option.sidebar.desc',
-				'options' => array(
-					'index' => 'plugins.themes.psychOpen.option.sidebar.enable',
-					'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
-				),
-			)
-		);
-		// template option: issues can be sorted by year or volume. this is used for the issue sidebar plugin and the archive
-		$this->addOption(
-			'issueViewType',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.section.header.issue.view',
-				'description' => 'plugins.themes.psychOpen.option.section.header.issue.view.desc',
-				'options' => array(
-					'noSort' => 'plugins.themes.psychOpen.option.sidebar.issue.unsorted',
-					'sortByYear' => 'plugins.themes.psychOpen.option.sidebar.issue.year',
-					'sortByVolume' => 'plugins.themes.psychOpen.option.sidebar.issue.volume',
-				),
-			)
-		);
-		/* enable/disable section header on archive*/
-		$this->addOption(
-			'loadSectionHeaderIssue',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.section.header.issue',
-				'description' => 'plugins.themes.psychOpen.option.section.header.issue.desc',
-				'options' => array(
-					'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
-					'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
-				),
-			)
-		);
-		// template option: enable/disable recent Articles on JournalPage
-		$this->addOption(
-			'loadRecentArticles',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.recent.articles',
-				'description' => 'plugins.themes.psychOpen.option.recent.articles.desc',
-				'options' => array(
-					'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
-					'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
-				),
-			)
-		);
-		// template option: enable/disable latest issue on JournalPage
-		$this->addOption(
-			'showLatestIssue',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.recent.issue',
-				'description' => 'plugins.themes.psychOpen.option.recent.issue.desc',
-				'options' => array(
-					'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
-					'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
-				),
-			)
-		);
-		// template option: enable/disable latest announcements on JournalPage
-		$this->addOption(
-			'showLatestAnnouncements',
-			'radio',
-			array(
-				'label' => 'plugins.themes.psychOpen.option.recent.announcements',
-				'description' => 'plugins.themes.psychOpen.option.recent.announcements.desc',
-				'options' => array(
-					'true' => 'plugins.themes.psychOpen.option.sidebar.enable',
-					'false' => 'plugins.themes.psychOpen.option.sidebar.disable',
-				),
-			)
-		);
-		// Hook which loads more data to the template manager
-		HookRegistry::register('TemplateManager::display', array($this, 'loadTemplateData'));
-		// loads the IssueBlock as BlockPlugin to make it available and sortable in the sidebar
-		$this->import('IssueBlockPlugin');
-		$blockPlugin = new IssueBlockPlugin();
-		PluginRegistry::register('blocks', $blockPlugin, $this->getPluginPath());
 	}
 
 	/**
@@ -276,38 +288,88 @@ class PsychOpenThemePlugin extends ThemePlugin
 		if (sizeof($uriParts) > 2 && $uriParts[1] != 'index.php') {
 			$imageUrl = "/".$uriParts[1].$imageUrl;
 		}
+
 		$templateMgr->assign(
 			array(
 				'imageURL' => $imageUrl,
-				'issueThumb' => $this->getOption('issueThumb'),
-				'loadSideBar' => $this->getOption('loadSideBar'),
-				'sidebarIssues' => $this->getOption('sidebarIssues'),
-				'loadSectionHeaderIssue' => $this->getOption('loadSectionHeaderIssue'),
-				'loadRecentArticles' => $this->getOption('loadRecentArticles'),
-				'showLatestIssue' => $this->getOption('showLatestIssue'),
-				'showLatestAnnouncements' => $this->getOption('showLatestAnnouncements'),
-				'issueViewType' => $this->getOption('issueViewType'),
-				'headerLogo' => $this->getOption('headerLogo'),
-				'mailingAddress' => $context ? $context->getSetting('mailingAddress') : "",
-				'contactPhone' => $context ? $context->getSetting('contactPhone') : "",
-				'contactEmail' => $context ? $context->getSetting('contactEmail') : "",
-				'contactName' => $context ? $context->getSetting('contactName') : "",
-				'supportName' => $context ? $context->getSetting('supportName') : "",
-				'supportPhone' => $context ? $context->getSetting('supportPhone') : "",
-				'supportEmail' => $context ? $context->getSetting('supportEmail') : "",
-				'contactTitle' => $context ? $context->getLocalizedSetting('contactTitle') : "",
-				'contactAffiliation' => $context ? $context->getLocalizedSetting('contactAffiliation') : "",
-				'onlineIssn' => $context ? $context->getSetting('onlineIssn') : "",
-				'printIssn' => $context ? $context->getSetting('printIssn') : "",
+				'issueThumb' => $this->getOptionValues($context->getId())['issueThumb'],
+				'loadSideBar' => $this->getOptionValues($context->getId())['loadSideBar'],
+				'loadSectionHeaderIssue' => $this->getOptionValues($context->getId())['loadSectionHeaderIssue'],
+				'loadRecentArticles' => $this->getOptionValues($context->getId())['loadRecentArticles'],
+				'showLatestIssue' => $this->getOptionValues($context->getId())['showLatestIssue'],
+				'showLatestAnnouncements' => $this->getOptionValues($context->getId())['showLatestAnnouncements'],
+				'issueViewType' => $this->getOptionValues($context->getId())['issueViewType'],
+				'headerLogo' => $this->getOptionValues($context->getId())['headerLogo'],
+				'mailingAddress' => $context ? $context->getData('mailingAddress') : "",
+				'contactPhone' => $context ? $context->getData('contactPhone') : "",
+				'contactEmail' => $context ? $context->getData('contactEmail') : "",
+				'contactName' => $context ? $context->getData('contactName') : "",
+				'supportName' => $context ? $context->getData('supportName') : "",
+				'supportPhone' => $context ? $context->getData('supportPhone') : "",
+				'supportEmail' => $context ? $context->getData('supportEmail') : "",
+				'contactTitle' => $context ? $context->getLocalizedData('contactTitle') : "",
+				'contactAffiliation' => $context ? $context->getLocalizedData('contactAffiliation') : "",
+				'onlineIssn' => $context ? $context->getData('onlineIssn') : "",
+				'printIssn' => $context ? $context->getData('printIssn') : "",
 			)
 		);
-		// register additional functions
-		$templateMgr->register_function('loadCategoryBySubmission', array(&$this, 'loadCategoryBySubmission'));
-		$templateMgr->register_function('loadRecentArticles', array(&$this, 'loadRecentArticles'));
-		$templateMgr->register_function('loadCurrentURI', array(&$this, 'loadCurrentURI'));
-		$templateMgr->register_function('loadDataFromXML', array(&$this, 'loadDataFromXML'));
-		$templateMgr->register_function('loadFooterMenu', array(&$this, 'loadFooterMenu'));
-		$templateMgr->register_function('getAbstractViews', array(&$this, 'getAbstractViews'));
+	}
+
+	public function callbackLoadHandler($hookName, $args)
+	{
+		$page = $args[0];
+		$request = Application::get()->getRequest();
+		$context = $request->getContext();
+		$contextId = $context == null ? 0 : $context->getId();
+		$templateMgr = TemplateManager::getManager($request);
+		//var_dump($page);
+		switch ("$page") {
+			case 'index':
+			case '':
+				$templateMgr->assign('journalDescriptionCustom', $this->getOptionValues($context->getId())['journalDescription']);
+				$templateMgr->assign('recentArticles', $this->_loadRecentArticles(true, $contextId));
+				$publishedIterator = Services::get('issue')->getMany(['contextId' => $context->getId(), 'isPublished' => true,]);
+				$templateMgr->assign('issues_full', iterator_to_array($publishedIterator));
+				break;
+			case 'article':
+			case 'issue':
+			case 'search':
+			case 'catalog':
+				$templateMgr->register_function('loadCategoryBySubmission', array(&$this, 'loadCategoryBySubmission'));
+				$templateMgr->register_function('loadDataFromXML', array(&$this, 'loadDataFromXML'));
+				$templateMgr->register_function('getAbstractViews', array(&$this, 'getAbstractViews'));
+				break;
+		}
+
+		$templateMgr->assign('footerMenu', $this->_loadFooterMenu("Footer", $contextId));
+	}
+
+	/**
+	 * This function loads the last five published articles for the " Recent Articles " section on the index page of the journal.
+	 *
+	 * @param $loadRecentArticles
+	 * @param $contextId
+	 * @return array true result size > 0, otherwise false
+	 */
+	private function _loadRecentArticles($loadRecentArticles, $contextId)
+	{
+		$ret = null;
+		if ($loadRecentArticles == "true") {
+			$submissionsIterator = Services::get('submission')->getMany(
+				[
+					'contextId' => $contextId,
+					'status' => 3,
+					'count' => 25,
+				]
+			);
+			if (isset($submissionsIterator)) {
+				$arr = iterator_to_array($submissionsIterator);
+				shuffle($arr);
+				$ret = array_slice($arr, 0, 5);
+			}
+		}
+
+		return $ret;
 	}
 
 	/**
@@ -320,23 +382,19 @@ class PsychOpenThemePlugin extends ThemePlugin
 	 * @param $smarty TemplateManager
 	 * @return bool true if menu is successfully loaded, otherwise false
 	 */
-	public function loadFooterMenu($params, $smarty)
+	private function _loadFooterMenu($footerMenuTitle, $contextId)
 	{
-		$request = Application::get()->getRequest();
-		$journal = $request->getJournal();
 		$navigationMenuDao = DAORegistry::getDAO('NavigationMenuDAO');
-		if ($navigationMenuDao->navigationMenuExistsByTitle($journal->getId(), $params['footerMenuTitle'])) {
-			$navigationMenu = $navigationMenuDao->getByTitle($journal->getId(), $params['footerMenuTitle']);
+		$navigationMenuItems = null;
+		if ($navigationMenuDao->navigationMenuExistsByTitle($contextId, $footerMenuTitle)) {
+			$navigationMenu = $navigationMenuDao->getByTitle($contextId, $footerMenuTitle);
 			if (isset($navigationMenu)) {
 				$navigationMenuItemDao = DAORegistry::getDAO('NavigationMenuItemDAO');
 				$navigationMenuItems = $navigationMenuItemDao->getByMenuId($navigationMenu->getId())->toArray();
-				$smarty->assign('footerMenu', $navigationMenuItems);
-
-				return true;
 			}
 		}
 
-		return false;
+		return $navigationMenuItems;
 	}
 
 	/**
@@ -350,71 +408,19 @@ class PsychOpenThemePlugin extends ThemePlugin
 	public function loadCategoryBySubmission($params, $smarty)
 	{
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		$categories = $categoryDao->getBySubmissionId($params['submissionId']);
+		error_log($params['submissionId']);
+		$categories = $categoryDao->getByPublicationId($params['submissionId'])->toArray();
 		$ret = array();
+		error_log(sizeof($categories));
 		foreach ($categories as $value) {
-			array_push($ret, $categoryDao->getById($value['id'], $value['context_id'], $value['parent_id']));
+			array_push($ret, $categoryDao->getById($value->getId(), $value->getContextId(), $value->getParentId()));
 		}
+		error_log(sizeof($ret));
 		$smarty->assign('articleCat', $ret);
 
 		return sizeof($ret) > 0;
 	}
 
-	/**
-	 * This function loads the last five published articles for the " Recent Articles " section on the index page of the journal.
-	 *
-	 * @param $params array : list of parameters
-	 * @param $smarty TemplateManager
-	 * @return bool true result size > 0, otherwise false
-	 */
-	public function loadRecentArticles($params, $smarty)
-	{
-		var_dump("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		var_dump($params['loadRecentArticles']);
-		if ($params['loadRecentArticles'] == "true") {
-			$request = Application::get()->getRequest();
-			$journal = $request->getJournal();
-			$submissionsIterator = Services::get('submission')->getMany(
-				[
-					'contextId' => $journal->getId(),
-					'status' => 3,
-					'count' => 25,
-				]
-			);
-			$arr = iterator_to_array($submissionsIterator);
-			var_dump($arr);
-			$rand = array_rand($arr, 5);
-			$ret = [];
-			foreach ($rand as $r) {
-				array_push($ret, $arr[$r]);
-			}
-
-			$smarty->assign('recentArticles', $ret);
-
-			return sizeof($ret) > 0;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Returns the actual URL to the View
-	 *
-	 * @param $params array : list of parameters
-	 * @param $smarty TemplateManager
-	 * @return string The current URL
-	 */
-	public function loadCurrentURI($params, $smarty)
-	{
-		if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {
-			$pro = 'https';
-		} else {
-			$pro = 'http';
-		}
-		$port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
-
-		return $pro."://".$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
-	}
 
 	/**
 	 *

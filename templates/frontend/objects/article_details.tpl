@@ -291,7 +291,7 @@
                             </li>
                         {/if}
                         {* CATEGORY *}
-                        {assign var="catLoaded" value={loadCategoryBySubmission submissionId=$article->getId()}}
+                        {assign var="catLoaded" value={loadCategoryBySubmission submissionId=$article->getCurrentPublication()->getId()}}
                         {if $catLoaded}
                             <li class="list-group-item">
                                 <div class="row mb-1">

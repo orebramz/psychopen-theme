@@ -33,7 +33,7 @@
             </a>
         {/if}
         <div class="media-body">
-            {assign var="catLoaded" value={loadCategoryBySubmission submissionId=$article->getId()}}
+            {assign var="catLoaded" value={loadCategoryBySubmission submissionId=$article->getCurrentPublication()->getId()}}
             {if $catLoaded}
                 <div class="row article-category">
                     <div class="col-12">
@@ -138,7 +138,7 @@
                                 {assign var="file" value=$galley->getFile()}
                                 {*{if $galley->getRemoteUrl() || ($file && in_array($file->getGenreId(), $primaryGenreIds))}*}
                                 {assign var="hasArticleAccess" value=$hasAccess}
-                                {if ($article->getAccessStatus() == $smarty.const.ARTICLE_ACCESS_OPEN)}
+	                            {if $currentContext->getSetting('publishingMode') == $smarty.const.PUBLISHING_MODE_OPEN || $publication->getData('accessStatus') == $smarty.const.ARTICLE_ACCESS_OPEN}
                                     {assign var="hasArticleAccess" value=1}
                                 {/if}
                                 {include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess custom_classes="btn btn-sm btn-outline-dark mt-lg-0 mt-3"}

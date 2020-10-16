@@ -41,6 +41,8 @@
     <message key="plugins.themes.psychOpen.option.sidebar.issue.unsorted">ungrouped</message>
     <message key="plugins.themes.psychOpen.option.sidebar.issue.year">by year</message>
     <message key="plugins.themes.psychOpen.option.sidebar.issue.volume">by volume</message>
+	<message key="plugins.themes.psychOpen.option.journalDescription">Journal description</message>
+	<message key="plugins.themes.psychOpen.option.journalDescription.desc">This field can be used to set a custom Journal description for the Journal Index Page. In some cases the Journal description in the Journal overview may contain different or less information!</message>
     <!--Header Strings-->
     <message key="plugins.themes.psychOpen.header.explore">Explore PsychOpen Journals</message>
     <message key="plugins.themes.psychOpen.header.about">About PsychOpen</message>

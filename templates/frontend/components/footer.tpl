@@ -50,8 +50,7 @@
                     </div>
                 </div>
             </div>
-            {assign var="loadFooterMenu" value={loadFooterMenu footerMenuTitle="Footer"}}
-            {if $loadFooterMenu && $footerMenu}
+            {if $footerMenu}
                 <div class="col-12 col-md-6 col-lg mb-2 mt-3 d-flex justify-content-lg-center">
 
                     <div>

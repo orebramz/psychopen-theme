@@ -1,0 +1,264 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-10-16T12:22:29+00:00\n"
+"PO-Revision-Date: 2020-10-16T12:22:29+00:00\n"
+"Language: \n"
+
+msgid "plugins.themes.psychOpen.name"
+msgstr "PsychOpen Default Theme"
+
+msgid "plugins.themes.psychOpen.description"
+msgstr "The PsychOpen Default Theme"
+
+msgid "plugins.blocks.issues.title"
+msgstr "Issue Block"
+
+msgid "plugins.blocks.issues.desc"
+msgstr "This plugin provides the IssueOverview in the sidebar."
+
+msgid "plugins.themes.psychOpen.option.scheme"
+msgstr "Scheme selection"
+
+msgid "plugins.themes.psychOpen.option.scheme.desc"
+msgstr "Selection of the style for the journal"
+
+msgid "plugins.themes.psychOpen.option.scheme.cpe"
+msgstr "Clinical Psychology in Europe (CPE)"
+
+msgid "plugins.themes.psychOpen.option.scheme.default"
+msgstr "Default"
+
+msgid "plugins.themes.psychOpen.option.scheme.ejop"
+msgstr "Europe's Journal for Psychology (EJOP)"
+
+msgid "plugins.themes.psychOpen.option.scheme.jbdgm"
+msgstr "Yearbook of Music Psychology (JBDGM)"
+
+msgid "plugins.themes.psychOpen.option.scheme.ijpr"
+msgstr "Interpersona (IJPR)"
+
+msgid "plugins.themes.psychOpen.option.scheme.meth"
+msgstr "Methodology (METH)"
+
+msgid "plugins.themes.psychOpen.option.scheme.spb"
+msgstr "Social Psychological Bulletin (SPB)"
+
+msgid "plugins.themes.psychOpen.option.scheme.ps"
+msgstr "Personality Science (PS)"
+
+msgid "plugins.themes.psychOpen.option.scheme.sotrap"
+msgstr "Sexual Offending (SOTRAP)"
+
+msgid "plugins.themes.psychOpen.option.scheme.qcmb"
+msgstr "Quantitative and Computational Methods in Behavioral Sciences (QCMB)"
+
+msgid "plugins.themes.psychOpen.option.header.logo"
+msgstr "Header Image"
+
+msgid "plugins.themes.psychOpen.option.header.logo.desc"
+msgstr "Upload a header logo into the OJS public folder and enter the name of the file here."
+
+msgid "plugins.themes.psychOpen.option.issueThumb"
+msgstr "Issue Thumbnail"
+
+msgid "plugins.themes.psychOpen.option.issueThumb.desc"
+msgstr "Optional image for all issues without own image in archive."
+
+msgid "plugins.themes.psychOpen.option.sidebar.label"
+msgstr "Sidebar:"
+
+msgid "plugins.themes.psychOpen.option.sidebar.desc"
+msgstr "Show/hide the sidebar for the entire journal."
+
+msgid "plugins.themes.psychOpen.option.sidebar.enable"
+msgstr "Show"
+
+msgid "plugins.themes.psychOpen.option.sidebar.disable"
+msgstr "Hide"
+
+msgid "plugins.themes.psychOpen.option.section.header.issue"
+msgstr "Show/Hide sections as headings."
+
+msgid "plugins.themes.psychOpen.option.section.header.issue.desc"
+msgstr "Shows or hides the sections as headings in the issues overview."
+
+msgid "plugins.themes.psychOpen.option.recent.articles"
+msgstr "Journal index: recent articles"
+
+msgid "plugins.themes.psychOpen.option.recent.articles.desc"
+msgstr "Show the most recently published articles on the index page.(max. 5)"
+
+msgid "plugins.themes.psychOpen.option.recent.issue"
+msgstr "Journal index: issue"
+
+msgid "plugins.themes.psychOpen.option.recent.issue.desc"
+msgstr "Show the last issue with all articles on the index page"
+
+msgid "plugins.themes.psychOpen.option.recent.announcements"
+msgstr "Journal index: announcements"
+
+msgid "plugins.themes.psychOpen.option.recent.announcements.desc"
+msgstr "Show announcements on the index page"
+
+msgid "plugins.themes.psychOpen.option.section.header.issue.view"
+msgstr "Issue grouping"
+
+msgid "plugins.themes.psychOpen.option.section.header.issue.view.desc"
+msgstr ""
+"This setting is used to combine the issues. A grouping by year or volume is possible. This is used\n"
+"        for the overview in the sidebar and in the archive!\n"
+"    "
+
+msgid "plugins.themes.psychOpen.option.sidebar.issue.unsorted"
+msgstr "ungrouped"
+
+msgid "plugins.themes.psychOpen.option.sidebar.issue.year"
+msgstr "by year"
+
+msgid "plugins.themes.psychOpen.option.sidebar.issue.volume"
+msgstr "by volume"
+
+msgid "plugins.themes.psychOpen.option.journalDescription"
+msgstr "Journal description"
+
+msgid "plugins.themes.psychOpen.option.journalDescription.desc"
+msgstr "This field can be used to set a custom Journal description for the Journal Index Page. In some cases the Journal description in the Journal overview may contain different or less information!"
+
+msgid "plugins.themes.psychOpen.header.explore"
+msgstr "Explore PsychOpen Journals"
+
+msgid "plugins.themes.psychOpen.header.about"
+msgstr "About PsychOpen"
+
+msgid "plugins.themes.psychOpen.header.lang.selected"
+msgstr "EN"
+
+msgid "plugins.themes.psychOpen.header.lang.select.option"
+msgstr "German"
+
+msgid "plugins.themes.psychOpen.aria.lang.select"
+msgstr "Language selection"
+
+msgid "plugins.themes.psychOpen.aria.title"
+msgstr "Title"
+
+msgid "plugins.themes.psychOpen.aria.subtitle"
+msgstr "Subtitle"
+
+msgid "plugins.themes.psychOpen.aria.transtitle"
+msgstr "Translated title"
+
+msgid "plugins.themes.psychOpen.aria.authors"
+msgstr "Authors"
+
+msgid "plugins.themes.psychOpen.aria.article.main"
+msgstr "Article"
+
+msgid "plugins.themes.psychOpen.aria.article.sidebar"
+msgstr "Article information"
+
+msgid "plugins.themes.psychOpen.aria.article.sidebar.download"
+msgstr "Article reading view or download"
+
+msgid "plugins.themes.psychOpen.aria.article.published"
+msgstr "Published at"
+
+msgid "plugins.themes.psychOpen.aria.article.doi"
+msgstr "Digital Object Identifier (DOI)"
+
+msgid "plugins.themes.psychOpen.aria.category.desc"
+msgstr "Category description"
+
+msgid "plugins.themes.psychOpen.journal.recent.articles"
+msgstr "Recent Articles"
+
+msgid "plugins.themes.psychOpen.article.details.views"
+msgstr "Views"
+
+msgid "plugins.themes.psychOpen.article.details.altmetric"
+msgstr "Altmetric"
+
+msgid "plugins.themes.psychOpen.article.details.plumx"
+msgstr "PlumX"
+
+msgid "plugins.themes.psychOpen.article.details.abstract"
+msgstr "Abstract"
+
+msgid "plugins.themes.psychOpen.article.details.dimensions"
+msgstr "Dimensions"
+
+msgid "plugins.themes.psychOpen.article.views"
+msgstr "Views"
+
+msgid "plugins.themes.psychOpen.article.views.total"
+msgstr "Total"
+
+msgid "plugins.themes.psychOpen.article.view.full"
+msgstr "Full-screen"
+
+msgid "plugins.themes.psychOpen.article.view.full.close"
+msgstr "Close full-screen"
+
+msgid "plugins.themes.psychOpen.categories.sub"
+msgstr "Subcategories"
+
+msgid "plugins.themes.psychOpen.categories.parent"
+msgstr "Parent category"
+
+msgid "plugins.themes.psychOpen.categories.heading"
+msgstr "Related articles (number: {$numTitles})"
+
+msgid "plugins.themes.psychOpen.user.first.name"
+msgstr "Given name"
+
+msgid "plugins.themes.psychOpen.user.middle.name"
+msgstr "Middle name"
+
+msgid "plugins.themes.psychOpen.user.last.name"
+msgstr "Surname"
+
+msgid "plugins.themes.psychOpen.register.privacy"
+msgstr "Privacy Policy and Notifications"
+
+msgid "plugins.themes.psychOpen.register.user"
+msgstr "User details"
+
+msgid "plugins.themes.psychOpen.register.login"
+msgstr "Login details"
+
+msgid "plugins.themes.psychOpen.footer.issn"
+msgstr "ISSN"
+
+msgid "plugins.themes.psychOpen.footer.print"
+msgstr "Print"
+
+msgid "plugins.themes.psychOpen.footer.online"
+msgstr "Online"
+
+msgid "plugins.themes.psychOpen.footer.license.pre"
+msgstr "Unless otherwise noted, site content is licensed under a"
+
+msgid "plugins.themes.psychOpen.footer.license.link"
+msgstr "Creative Commons Attribution 4.0 International License. (CC BY 4.0)"
+
+msgid "plugins.themes.psychOpen.footer.links"
+msgstr "Links"
+
+msgid "plugins.themes.psychOpen.submission.new"
+msgstr "New submission"
+
+msgid "plugins.themes.psychOpen.citations"
+msgstr "Citations"
+
+msgid "plugins.themes.psychOpen.impact"
+msgstr "Impact"
+
+msgid "search.no.Results"
+msgstr "No search results found! Please enter a search term or phrase into the search field!"
