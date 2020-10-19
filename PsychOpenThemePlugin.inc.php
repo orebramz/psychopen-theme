@@ -57,8 +57,8 @@ class PsychOpenThemePlugin extends ThemePlugin
 	 */
 	private $external_styles = array(
 		'opensans-cdn' => 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap',
-		'awesome-cdn' => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css',
-		'bootstrap' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
+		'awesome-cdn' => 'https://www.lifp.de/assets/scripts/font-awesome/5.14.0/css/all.min.css',
+		'bootstrap' => 'https://www.lifp.de/assets/scripts/bootstrap/4.5.2/css/bootstrap.min.css',
 	);
 
 	/**
@@ -211,10 +211,13 @@ class PsychOpenThemePlugin extends ThemePlugin
 			);
 			$this->addOption(
 				'journalDescription',
-				'FieldTextarea',
+				'FieldRichTextarea',
 				[
 					'label' => __('plugins.themes.psychOpen.option.journalDescription'),
 					'description' => __('plugins.themes.psychOpen.option.journalDescription.desc'),
+					'plugins' => 'paste link code image imagetools lists preview',
+					'toolbar' => 'bold italic superscript subscript | numlist bullist | link | code | image | preview',
+					//'isMultilingual' => true  // TODO this does not work at the moment: https://github.com/pkp/pkp-lib/issues/6186
 				]
 			);
 			// Hook which loads more data to the template manager

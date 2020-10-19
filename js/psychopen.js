@@ -1,9 +1,9 @@
 // ==ClosureCompiler==
 // @compilation_level SIMPLE_OPTIMIZATIONS
 // @output_file_name default.js
-// @code_url https://code.jquery.com/jquery-3.4.1.min.js
-// @code_url https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js
-// @code_url https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js
+// @code_url https://www.lifp.de/assets/scripts/jquery/3.5.1/jquery.min.js
+// @code_url https://www.lifp.de/assets/scripts/popperjs/1.16.1/popper.min.js
+// @code_url https://www.lifp.de/assets/scripts/bootstrap/4.5.2/js/bootstrap.min.js
 // @code_url https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js
 // @code_url https://badge.dimensions.ai/badge.js
 // ==/ClosureCompiler==
