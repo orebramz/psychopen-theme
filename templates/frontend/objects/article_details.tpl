@@ -34,7 +34,7 @@
 		{if $issue->getPublished()}
 			{assign var=pubId value=$article->getStoredPubId($pubIdPlugin->getPubIdType())}
 		{else}
-			{assign var=pubId value=$pubIdPlugin->getPubId($article)}{* Preview pubId *}
+			{assign var=pubId value=$pubIdPlugin->getPubId($publication)}{* Preview pubId *}
 		{/if}
 	{/if}
 {/foreach}
@@ -45,108 +45,100 @@
 	<div class="row mt-4">
 		<div class="col mb-4">
 			<header class="article-details-header mb-3 border-bottom">
+				{* Notification that this is an old version *}
+				{if $currentPublication->getId() !== $publication->getId()}
+					<div class="alert alert-info">
+						{capture assign="latestVersionUrl"}{url page="article" op="view" path=$article->getBestId()}{/capture}
+						{translate key="submission.outdatedVersion"
+						datePublished=$publication->getData('datePublished')|date_format:$dateFormatShort
+						urlRecentVersion=$latestVersionUrl|escape
+						}
+					</div>
+				{/if}
 				<h1>
-					{$article->getLocalizedTitle($article->getLocale())|escape}
+					{$publication->getLocalizedTitle($publication->getData('locale'))|escape}
 				</h1>
 				{if sizeof($currentJournal->getSupportedLocaleNames())>1}
 					{foreach from=$currentJournal->getSupportedLocaleNames() item=itm key=localekey}
-						{if $localekey != $article->getLocale() && $article->getLocalizedTitle($localekey)}
-							<h2 class="text-muted">{$article->getLocalizedTitle($localekey)|escape}</h2>
+						{if $localekey != $publication->getData('locale') && $publication->getLocalizedTitle($localekey)}
+							<h2 class="text-muted">{$publication->getLocalizedTitle($localekey)|escape}</h2>
 						{/if}
 					{/foreach}
 				{/if}
-				{if $article->getLocalizedSubtitle($article->getLocale())}
-					<h3 class="text-muted">{$article->getLocalizedSubtitle($article->getLocale())|escape}</h3>
+				{if $publication->getLocalizedData('subtitle')}
+					<h3 class="text-muted">{$publication->getLocalizedData('subtitle')|escape}</h3>
 				{/if}
 			</header>
 			<section aria-label="{translate key="plugins.themes.psychOpen.aria.article.main"}">
-				{if $article->getAuthors()}
+				{if $publication->getData('authors')}
 					<h2 class="sr-only">{translate key="plugins.themes.psychOpen.aria.authors"}</h2>
 					<ul class="article-details-authors list-group list-group-no-border mb-3">
-						{foreach from=$article->getAuthors() item=author}
+						{foreach from=$publication->getData('authors') item=author}
 							<li class="list-group-item mb-2">
 								<strong>{$author->getFullName()|escape}</strong>
-								{if $author->getOrcid()}
-									<a href="{$author->getOrcid()|escape}" target="_blank" rel="noreferrer" class="ml-1">
+								{if $author->getData('orcid')}
+									<a href="{$author->getData('orcid')|escape}" target="_blank" rel="noreferrer" class="ml-1">
 										<img style="max-height: 18px; position: relative; top: -2px" src="{$imageURL}ORCID-icon.png" alt="Orcid">
 									</a>
 								{/if}
-								{if $author->getLocalizedAffiliation()}
+								{if $author->getLocalizedData('affiliation')}
 									<div class="article-author-affilitation">
-										{$author->getLocalizedAffiliation()|escape}
+										{$author->getLocalizedData('affiliation')|escape}
 									</div>
 								{/if}
-								{*{if $author->getOrcid()}
-									<div class="orcid-lol">
-										<img style="max-height: 18px; position: relative; top: -2px" src="{$imageURL}ORCID-icon.png" alt="Open Access">
-										<a href="{$author->getOrcid()|escape}" target="_blank">
-											{$author->getOrcid()|escape}
-										</a>
-									</div>
-								{/if}*}
 							</li>
 						{/foreach}
 					</ul>
 				{/if}
 				{* Article abstract *}
-				{if $article->getLocalizedAbstract()}
+				{if $publication->getLocalizedData('abstract')}
 					<div class="article-details-summary row mb-2" id="summary">
 						<div class="article-abstract font-layout col-12">
 							<h3 class="border-bottom mb-2">{translate key="plugins.themes.psychOpen.article.details.abstract"}</h3>
 							{* TODO cover set to false *}
-							{if $article->getLocalizedCoverImage() && false}
+							{if $publication->getLocalizedData('coverImage') && false}
 								<img class="article-abstract-img float-right ml-3" style="max-width: 200px;"
-								     src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
+								     src="{$publication->getLocalizedCoverImageUrl($article->getData('contextId'))|escape}"
+								     alt="{$coverImage.altText|escape|default:''}">
 							{/if}
-							{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br}
-						</div>
-					</div>
-				{/if}
-				{* Article Subject *}
-				{if $article->getLocalizedSubject()}
-					<div class="row">
-						<div class="col-12">
-							<h2>{translate key="article.subject"}</h2>
-						</div>
-						<div class="col-12">
-							{$article->getLocalizedSubject()|escape}
+							{$publication->getLocalizedData('abstract')|strip_unsafe_html|nl2br}
 						</div>
 					</div>
 				{/if}
 				{* Author biographies *}
 				{assign var="hasBiographies" value=0}
-				{foreach from=$article->getAuthors() item=author}
-					{if $author->getLocalizedBiography()}
+				{foreach from=$publication->getData('authors') item=author}
+					{if $author->getLocalizedData('biography')}
 						{assign var="hasBiographies" value=$hasBiographies+1}
 					{/if}
 				{/foreach}
 				{if $hasBiographies}
-					<div class="row">
+					<div class="article-details-summary row mb-2">
 						<div class="col-12">
-							<h2>
+							<h3 class="border-bottom mb-2">
 								{if $hasBiographies > 1}
 									{translate key="submission.authorBiographies"}
 								{else}
 									{translate key="submission.authorBiography"}
 								{/if}
-							</h2>
+							</h3>
 						</div>
-						<div class="col-12">
-							{foreach from=$article->getAuthors() item=author}
-								{if $author->getLocalizedBiography()}
+						<div class="article-abstract font-layout col-12">
+							{foreach from=$publication->getData('authors') item=author}
+								{if $author->getLocalizedData('biography')}
 									<div class="sub_item">
 										<div class="label">
-											{if $author->getLocalizedAffiliation()}
+											{if $author->getLocalizedData('affiliation')}
 												{capture assign="authorName"}{$author->getFullName()|escape}{/capture}
 												{capture assign="authorAffiliation"}<span
-														class="affiliation">{$author->getLocalizedAffiliation()|escape}</span>{/capture}
+														class="affiliation">{$author->getLocalizedData('affiliation')|escape}</span>{/capture}
 												{translate key="submission.authorWithAffiliation" name=$authorName affiliation=$authorAffiliation}
 											{else}
 												{$author->getFullName()|escape}
 											{/if}
 										</div>
 										<div class="value">
-											{$author->getLocalizedBiography()|strip_unsafe_html}
+											{$author->getLocalizedData('biography')|strip_unsafe_html}
 										</div>
 									</div>
 								{/if}
@@ -158,17 +150,13 @@
 			</section>
 		</div>
 		<aside class="col-12 col-xl-4 mb-5" aria-label="{translate key="plugins.themes.psychOpen.aria.article.sidebar"}">
-			{if $article && $article->getGalleys()}
-				{foreach from=$article->getGalleys() item=galley}
+			{if $publication && $publication->getData('galleys')}
+				{foreach from=$publication->getData('galleys') item=galley}
 					{if "XML" == $galley->getLabel()}
-						{assign var="apatitle" value={loadDataFromXML locale=$article->getLocale() xmlUri={url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId($currentJournal)}}}
+						{assign var="apatitle" value={loadDataFromXML locale=$publication->getData('locale') xmlUri={url page="article" op="download" path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId($currentJournal)}}}
 					{/if}
 				{/foreach}
-			{/if}            {* Article cover image *}
-			{*{if $article->getLocalizedCoverImage() }
-				<img class="img-responsive"
-					 src="{$article->getLocalizedCoverImageUrl()|escape}"{if $article->getLocalizedCoverImageAltText()} alt="{$article->getLocalizedCoverImageAltText()|escape}"{/if}>
-			{/if}*}
+			{/if}
 			{* Article Galleys *}
 			{if $primaryGalleys || $supplementaryGalleys}
 				<div class="btn-group d-flex mb-4" role="group" aria-label="{translate key="plugins.themes.psychOpen.aria.article.sidebar.download"}">
@@ -176,13 +164,13 @@
 						{foreach from=$primaryGalleys item=galley}
 							{if $galley->getLabel()|escape == "PDF" || $galley->getLabel()|escape == "HTML" || $galley->getLabel()|escape == "XML"}
 								{include file="frontend/objects/galley_link.tpl" custom_classes="btn btn-secondary btn-download"
-								parent=$article purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+								parent=$article publication=$publication galley=$galley purchaseFee=$currentJournal->getData('purchaseArticleFee') purchaseCurrency=$currentJournal->getData('currency')}
 							{/if}
 						{/foreach}
 					{/if}
 					{if $supplementaryGalleys}
 						{foreach from=$supplementaryGalleys item=galley}
-							{include file="frontend/objects/galley_link.tpl" custom_classes="btn btn-secondary btn-download" parent=$article isSupplementary="1"}
+							{include file="frontend/objects/galley_link.tpl" custom_classes="btn btn-secondary btn-download" parent=$article publication=$publication galley=$galley isSupplementary="1"}
 						{/foreach}
 					{/if}
 				</div>
@@ -221,26 +209,32 @@
 						</a>
 					</li>
 				{/if}
-				{if $copyright || $licenseUrl}
-					<li class="nav-item">
-						<a class="nav-link" id="license-tab" data-toggle="tab" href="#license" role="tab" aria-controls="license" aria-selected="false">
-							{translate key="submission.license"}
-						</a>
-					</li>
-				{/if}
+				<li class="nav-item">
+					<a class="nav-link" id="license-tab" data-toggle="tab" href="#license" role="tab" aria-controls="license" aria-selected="false">
+						{translate key="submission.license"}
+					</a>
+				</li>
 			</ul>
 			<div class="tab-content mb-5" id="myTabContent">
 				<div class="tab-pane fade show active" id="article-meta" role="tabpanel" aria-labelledby="article-meta-tab">
 					<ul class="list-group list-group-flush">
 						{* Published date *}
-						{if $article->getDatePublished()}
+						{if $publication->getData('datePublished')}
 							<li class="list-group-item">
 								<div class="row">
 									<div class="col-1">
 										<i class="fas fa-calendar-alt"></i>
 										<span class="sr-only">{translate key="plugins.themes.psychOpen.aria.article.published"}</span>
 									</div>
-									<div class="col">{$article->getDatePublished()|date_format:"%e. %B %Y"}</div>
+									<div class="col">
+										{* If this is the original version *}
+										{if $firstPublication->getID() === $publication->getId()}
+											<span>{$firstPublication->getData('datePublished')|date_format:"%e. %B %Y"}</span>
+											{* If this is an updated version *}
+										{else}
+											<span>{translate key="submission.updatedOn" datePublished=$firstPublication->getData('datePublished')|date_format:"%e. %B %Y" dateUpdated=$publication->getData('datePublished')|date_format:"%e. %B %Y"}</span>
+										{/if}
+									</div>
 								</div>
 							</li>
 						{/if}
@@ -316,7 +310,7 @@
 							</li>
 						{/if}
 						{* CATEGORY *}
-						{assign var="catLoaded" value={loadCategoryBySubmission submissionId=$article->getCurrentPublication()->getId()}}
+						{assign var="catLoaded" value={loadCategoryBySubmission submissionId=$publication->getId()}}
 						{if $catLoaded}
 							<li class="list-group-item">
 								<div class="row mb-1">
@@ -335,34 +329,40 @@
 							</li>
 						{/if}
 						{* Keywords *}
-						{if !empty($keywords[$currentLocale])}
+						{if !empty($publication->getLocalizedData('keywords'))}
 							<li class="list-group-item">
 								<div class="row mb-1">
 									<div class="col-12">
-										<strong>{translate key="article.subject"}:</strong>
+										<strong>
+											{capture assign=translatedKeywords}{translate key="article.subject"}{/capture}
+											{translate key="semicolon" label=$translatedKeywords}
+										</strong>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-12">
-										{foreach from=$keywords item=keyword}
-											{foreach name=keywords from=$keyword item=keywordItem}
-												<span class="badge badge-light">{$keywordItem|escape}</span>
-											{/foreach}
+										{foreach name="keywords" from=$publication->getLocalizedData('keywords') item="keyword"}
+											<span class="badge badge-light">{$keyword|escape}</span>
 										{/foreach}
 									</div>
 								</div>
-
 							</li>
 						{/if}
 						{* References *}
-						{if $article->getCitations()}
+						{if $parsedCitations || $publication->getData('citationsRaw')}
 							<li class="list-group-item">
 								<div class="row">
 									<div class="col-12">
 										<strong>{translate key="submission.citations"}:</strong>
 									</div>
 									<div class="col-12">
-										{$article->getCitations()|nl2br}
+										{if $parsedCitations}
+											{foreach from=$parsedCitations item="parsedCitation"}
+												<p>{$parsedCitation->getCitationWithLinks()|strip_unsafe_html} {call_hook name="Templates::Article::Details::Reference" citation=$parsedCitation}</p>
+											{/foreach}
+										{else}
+											{$publication->getData('citationsRaw')|escape|nl2br}
+										{/if}
 									</div>
 								</div>
 							</li>
@@ -375,7 +375,7 @@
 								</div>
 								<div class="col-12">
 									{assign var="currentURI" value=$doiUrl}
-									{capture name="title"}{$article->getLocalizedTitle($article->getLocale())|escape} %7C {$siteTitle}{/capture}
+									{capture name="title"}{$publication->getLocalizedTitle($publication->getData('locale'))} | {$siteTitle}{/capture}
 									{include file="frontend/components/social_share.tpl" url=$currentURI title=$smarty.capture.title}
 								</div>
 							</div>
@@ -402,7 +402,6 @@
 									</ul>
 								</div>
 							</div>
-							{*{call_hook name="Templates::Article::Cite::Export"}*}
 						{else}
 							<div class="row mb-2 article-details-cite">
 								<div class="col-12">
@@ -457,63 +456,60 @@
 					{call_hook name="Templates::Article::Details"}
 				</div>
 				{* copyright tab *}
-				{if $copyright || $licenseUrl}
-					<div class="tab-pane fade" id="license" role="tabpanel" aria-labelledby="license-tab">
-						{if $licenseUrl}
-							{if $licenseUrl|strstr:"creativecommons.org"}
-								{assign var="myArray" value=$licenseUrl|explode:"/"}
-								<div class="row">
-									<div class="col text-center">
-										<img class="mt-2 mb-2" src="https://licensebuttons.net/l/{$myArray[4]}/{$myArray[5]}/88x31.png"
-										     alt="CC {$myArray[4]} {$myArray[5]} License"/>
-									</div>
+				<div class="tab-pane fade" id="license" role="tabpanel" aria-labelledby="license-tab">
+					{if $licenseUrl}
+						{if $licenseUrl|strstr:"creativecommons.org"}
+							{assign var="myArray" value=$licenseUrl|explode:"/"}
+							<div class="row">
+								<div class="col text-center">
+									<img class="mt-2 mb-2" src="https://licensebuttons.net/l/{$myArray[4]}/{$myArray[5]}/88x31.png"
+									     alt="CC {$myArray[4]} {$myArray[5]} License"/>
 								</div>
-								This work is licensed under a
-								<a href="{$licenseUrl|escape}">
-									Creative Commons
-									{if $licenseUrl|strstr:"/by-sa/"}
-										Attribution ShareAlike (CC BY-SA)
-									{elseif $licenseUrl|strstr:"/by-nd/"}
-										Attribution-NoDerivs (CC BY-ND)
-									{elseif $licenseUrl|strstr:"/by-nc/"}
-										Attribution-NonCommercial (CC BY-NC)
-									{elseif $licenseUrl|strstr:"/by-nc-sa/"}
-										Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
-									{elseif $licenseUrl|strstr:"/by-nc-nd/"}
-										Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)
-									{elseif $licenseUrl|strstr:"/by/"}
-										Attribution (CC BY)
-									{/if}
-									{$myArray[5]} International License.
-								</a>
-							{else}
-								<a href="{$licenseUrl|escape}">
-									{if $copyrightHolder}
-										{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
-									{else}
-										{translate key="submission.license"}
-									{/if}
-								</a>
-							{/if}
-							{*{if $ccLicenseBadge}
-								{$ccLicenseBadge}
-							{/if}*}
-						{elseif $copyright}
-							{$copyright}
+							</div>
+							This work is licensed under a
+							<a href="{$licenseUrl|escape}">
+								Creative Commons
+								{if $licenseUrl|strstr:"/by-sa/"}
+									Attribution ShareAlike (CC BY-SA)
+								{elseif $licenseUrl|strstr:"/by-nd/"}
+									Attribution-NoDerivs (CC BY-ND)
+								{elseif $licenseUrl|strstr:"/by-nc/"}
+									Attribution-NonCommercial (CC BY-NC)
+								{elseif $licenseUrl|strstr:"/by-nc-sa/"}
+									Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+								{elseif $licenseUrl|strstr:"/by-nc-nd/"}
+									Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)
+								{elseif $licenseUrl|strstr:"/by/"}
+									Attribution (CC BY)
+								{/if}
+								{$myArray[5]} International License.
+							</a>
+						{else}
+							<a href="{$licenseUrl|escape}">
+								{if $copyrightHolder}
+									{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
+								{else}
+									{translate key="submission.license"}
+								{/if}
+							</a>
 						{/if}
-					</div>
-				{/if}
+						{*{if $ccLicenseBadge}
+							{$ccLicenseBadge}
+						{/if}*}
+					{elseif $copyright}
+						{$copyright}
+					{else}
+						{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder[$publication->getData('locale')] copyrightYear=$copyrightYear}
+					{/if}
+				</div>
 				<div class="tab-pane fade" id="impact" role="tabpanel" aria-labelledby="impact-tab">
 					{* GALLEYS *}
-					{assign var=galleys value=$article->getGalleys()}
+					{assign var=galleys value=$publication->getData('galleys')}
 					<ul class="list-group list-group-flush">
 						{* altmetric *}
 						{if $pubId}
 							<li class="list-group-item">
 								<div class="row text-center mb-2 mt-3">
-									{*<div class="col-4">
-										<strong>{translate key="plugins.themes.psychOpen.article.details.altmetric"}</strong>
-									</div>*}
 									<div class="col-6">
 										<strong>{translate key="plugins.themes.psychOpen.article.details.plumx"}</strong>
 									</div>
@@ -522,9 +518,6 @@
 									</div>
 								</div>
 								<div class="row mb-3">
-									{*<div class="col-4 text-center">
-										<div data-badge-popover="top" data-badge-type="medium-donut" data-link-target="_blank" data-doi="{$pubId}" class="altmetric-embed"></div>
-									</div>*}
 									<div class="col-6 text-center">
 										<a href="https://plu.mx/plum/a/?doi={$pubId}" data-popup="top" data-size="large" class="plumx-plum-print-popup"
 										   data-site="plum"></a>
@@ -535,14 +528,10 @@
 									</div>
 								</div>
 							</li>
-							{*<li class="list-group-item">
-								<a href="https://plu.mx/plum/a/?doi={$pubId}" class="plumx-summary"></a>
-								<script type="text/javascript" src="//cdn.plu.mx/widget-summary.js"></script>
-							</li>*}
 						{/if}
 						{if $galleys}
 							<li class="list-group-item">
-								{assign var="abstractViews" value={getAbstractViews fileId=$article->getId()}}
+								{assign var="abstractViews" value={getAbstractViews fileId=$publication->getId()}}
 								{assign var="galleysTotalView" value=$abstractViews}
 								{foreach from=$galleys item=galley name=galleyList}
 									{*        {$galley->getGalleyLabel()}: {$galley->getViews()} views. *}
@@ -606,5 +595,4 @@
 			</div>
 		</aside><!-- .article-sidebar -->
 	</div><!-- .row -->
-
 </article>

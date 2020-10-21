@@ -58,7 +58,7 @@ class PsychOpenThemePlugin extends ThemePlugin
 	private $external_styles = array(
 		'opensans-cdn' => 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap',
 		'awesome-cdn' => 'https://www.lifp.de/assets/scripts/font-awesome/5.14.0/css/all.min.css',
-		'bootstrap' => 'https://www.lifp.de/assets/scripts/bootstrap/4.5.2/css/bootstrap.min.css',
+		'bootstrap' => 'https://www.lifp.de/assets/scripts/bootstrap/4.5.3/css/bootstrap.min.css',
 	);
 
 	/**
@@ -78,11 +78,8 @@ class PsychOpenThemePlugin extends ThemePlugin
 				$this->addScript($k, $v, array('baseUrl' => ''));
 			}*/
 			// add custom js to template
-			/*$this->addScript('cookieConsent', 'js/cookieConsentBannerStudy.min.js');*/
 			$this->addScript('cookieConsent', 'https://lifp.de/assets/cookieConsentBannerStudy.min.js', array('baseUrl' => ''));
 			$this->addScript('default', 'js/default.js');
-			/*$this->addScript('psychopen', 'js/psychopen.js');*/
-
 			// add primary user to template (displayed in header)
 			$this->addMenuArea(array('primary', 'user'));
 			// template option: color scheme/style selector
@@ -220,7 +217,6 @@ class PsychOpenThemePlugin extends ThemePlugin
 					//'isMultilingual' => true  // TODO this does not work at the moment: https://github.com/pkp/pkp-lib/issues/6186
 				]
 			);
-			// Hook which loads more data to the template manager
 			HookRegistry::register('LoadHandler', array($this, 'callbackLoadHandler'));
 			HookRegistry::register('TemplateManager::display', array($this, 'loadTemplateData'));
 			// loads the IssueBlock as BlockPlugin to make it available and sortable in the sidebar
@@ -325,7 +321,6 @@ class PsychOpenThemePlugin extends ThemePlugin
 		$context = $request->getContext();
 		$contextId = $context == null ? 0 : $context->getId();
 		$templateMgr = TemplateManager::getManager($request);
-		//var_dump($page);
 		switch ("$page") {
 			case 'index':
 			case '':

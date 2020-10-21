@@ -27,26 +27,25 @@
 
 {* Determine galley type and URL op *}
 {if $galley->isPdfGalley()}
-    {assign var="type" value="pdf"}
-    {assign var="view" value="view"}
-{elseif "HTML" eq ($galley->getGalleyLabel())}
-    {assign var="type" value="html"}
-    {assign var="view" value="view"}
-{elseif "XML" eq ($galley->getGalleyLabel())}
-    {assign var="type" value="xml"}
-    {assign var="view" value="view"}
+	{assign var="type" value="pdf"}
 {else}
-    {assign var="type" value="file"}
-    {assign var="view" value="view"}
+	{assign var="type" value="file"}
 {/if}
 
 {* Get page and parentId for URL *}
 {if $parent instanceOf Issue}
     {assign var="page" value="issue"}
     {assign var="parentId" value=$parent->getBestIssueId()}
+	{assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
 {else}
-    {assign var="page" value="article"}
-    {assign var="parentId" value=$parent->getBestArticleId()}
+	{assign var="page" value="article"}
+	{assign var="parentId" value=$parent->getBestId()}
+	{* Get a versioned link if we have an older publication *}
+	{if $publication && $publication->getId() !== $parent->getCurrentPublication()->getId()}
+		{assign var="path" value=$parentId|to_array:"version":$publication->getId():$galley->getBestGalleyId()}
+	{else}
+		{assign var="path" value=$parentId|to_array:$galley->getBestGalleyId()}
+	{/if}
 {/if}
 
 {* Get user access flag *}
@@ -57,12 +56,9 @@
         {assign var=restricted value="1"}
     {/if}
 {/if}
-{if $download}
-    {assign var="view" value="download"}
-{/if}
 {if $page == 'issue' || $galley->getLabel()|escape|upper == "PDF" || $galley->getLabel()|escape|upper == "HTML" || $galley->getLabel()|escape|upper == "XML"}
 {* Don't be frightened. This is just a link *}
-    <a class="{$custom_classes} galley-link" role="button" href="{url page=$page op=$view path=$parentId|to_array:$galley->getBestGalleyId($currentJournal)}" aria-label="{$type}"
+    <a class="{$custom_classes} galley-link {if $restricted} restricted{/if}" role="button" href="{url page=$page op="view" path=$path}" {if $labelledBy} aria-labelledby={$labelledBy}{/if}
        onclick="pushGoal('Galley', '{$galley->getLabel()|escape}', 1);">
 
         {* Add some screen reader text to indicate if a galley is restricted *}
