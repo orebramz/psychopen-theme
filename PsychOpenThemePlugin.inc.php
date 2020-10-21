@@ -406,14 +406,11 @@ class PsychOpenThemePlugin extends ThemePlugin
 	public function loadCategoryBySubmission($params, $smarty)
 	{
 		$categoryDao = DAORegistry::getDAO('CategoryDAO');
-		error_log($params['submissionId']);
 		$categories = $categoryDao->getByPublicationId($params['submissionId'])->toArray();
 		$ret = array();
-		error_log(sizeof($categories));
 		foreach ($categories as $value) {
 			array_push($ret, $categoryDao->getById($value->getId(), $value->getContextId(), $value->getParentId()));
 		}
-		error_log(sizeof($ret));
 		$smarty->assign('articleCat', $ret);
 
 		return sizeof($ret) > 0;
