@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/leibniz-psychology/psychopen-theme)
 [![OJS-Version](https://img.shields.io/badge/pkp--ojs-3.2-brightgreen)](https://github.com/pkp/ojs/tree/stable-3_2_1)
 
-This topic is used for almost all OJS 3.x PsychOpen journals. It's based on Bootstrap 4.5 and has a lot of custom Implementation, especially at the article details and the journal index page.
+This theme is used for almost all OJS 3.x PsychOpen journals. It's based on Bootstrap 4.5 and has a lot of custom Implementation, especially at the article details and the journal index page.
 
 ##### Journal index example
 ![](https://user-images.githubusercontent.com/7657717/97187675-f8b9d080-17a2-11eb-94a6-17663b1c6679.png)
