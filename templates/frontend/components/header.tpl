@@ -26,6 +26,8 @@
             <meta name="robots" content="noindex">
         {/if}
         {include file="frontend/components/headerHead.tpl"}
+	    <script src="https://lifp.de/assets/cookieConsentBannerStudy.min.js?v=3.1.2.4" type="text/javascript" defer></script>
+	    <script src="https://www.lifp.de/assets/psychopen/ojs_3_2/default.js" type="text/javascript" defer></script>
     </head>
 {/strip}
 <body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}">

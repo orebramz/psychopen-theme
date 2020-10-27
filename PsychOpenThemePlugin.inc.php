@@ -78,8 +78,8 @@ class PsychOpenThemePlugin extends ThemePlugin
 				$this->addScript($k, $v, array('baseUrl' => ''));
 			}*/
 			// add custom js to template
-			$this->addScript('cookieConsent', 'https://lifp.de/assets/cookieConsentBannerStudy.min.js', array('baseUrl' => ''));
-			$this->addScript('default', 'js/default.js');
+			//$this->addScript('cookieConsent', 'https://lifp.de/assets/cookieConsentBannerStudy.min.js', array('baseUrl' => ''));
+			//$this->addScript('default', 'js/default.js');
 			// add primary user to template (displayed in header)
 			$this->addMenuArea(array('primary', 'user'));
 			// template option: color scheme/style selector
