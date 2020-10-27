@@ -232,11 +232,7 @@ class PsychOpenThemePlugin extends ThemePlugin
             $templateMgr->assign('issues_full', $issues->toArray());
         }
         // set the url to the image folder of this plugin
-        $keywords = explode('/', $_SERVER['REQUEST_URI']);
-        $imageUrl = "/plugins/themes/psychOpen/images/";
-        if (sizeof($keywords) > 2 && $keywords[1] != 'index.php') {
-            $imageUrl = "/" . $keywords[1] . "/plugins/themes/psychOpen/images/";
-        }
+		$imageUrl = $request->getBaseUrl() .'/'.$this->getPluginPath()."/images/";
         // assign template options and other default values to the template (e.g. template wide contact information because they are shown in the footer)
         $templateMgr->assign(array(
             'imageURL' => $imageUrl,
