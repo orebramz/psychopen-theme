@@ -2,7 +2,6 @@
 import('lib.pkp.classes.plugins.ThemePlugin');
 require_once('plugins/themes/psychopen/classes/XML_Parser.php');
 
-
 /**
  * PsychOpenThemePlugin
  *
@@ -12,7 +11,6 @@ require_once('plugins/themes/psychopen/classes/XML_Parser.php');
  * - full support of Bootstrap 4.x
  * - customizable Journal Index (optional sidebar, recent articles, issues, announcements)
  * - simple addition of new color schemes
- * - crossref, scopus, google scholar and europepmc integration
  * - html and pfd viewer fully integrated into theme (overwriting of generic tpl files)
  * - sort function of issues(unsorted, by date or by volume)
  * - custom 'how to cite' function based on JATS XML data
@@ -26,7 +24,7 @@ require_once('plugins/themes/psychopen/classes/XML_Parser.php');
  *
  * @file plugins/themes/ojs_theme/PsychOpenThemePlugin.inc.php
  *
- * Copyright (2019) Leibniz Institute for Psychology Information (https://leibniz-psychology.org)
+ * Copyright (2019-2020) Leibniz Institute for Psychology Information (https://leibniz-psychology.org)
  *
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
@@ -36,20 +34,6 @@ require_once('plugins/themes/psychopen/classes/XML_Parser.php');
  */
 class PsychOpenThemePlugin extends ThemePlugin
 {
-	/**
-	 * List of external JavaScript/jQuery libs
-	 *
-	 * @var $external_scripts array
-	 */
-	private $external_scripts = array(
-		'jquery' => 'https://code.jquery.com/jquery-3.4.1.min.js',
-		'popper' => 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js',
-		'bootstrap' => 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js',
-		'altmetric-cdn' => 'https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js',
-		'dimensions-cdn' => 'https://badge.dimensions.ai/badge.js',
-		/*'cookieConsent' => 'https://www.lifp.de/assets/cookieConsentBanner.js',*/
-	);
-
 	/**
 	 * List of external css libs
 	 *
@@ -67,20 +51,15 @@ class PsychOpenThemePlugin extends ThemePlugin
 	 */
 	public function init()
 	{
-
 		if ($this->getEnabled()) {
 			// add external styles to template
 			foreach ($this->external_styles as $k => $v) {
 				$this->addStyle($k, $v, array('baseUrl' => ''));
 			}
-			// add external scripts to template
-			/*foreach ($this->external_scripts as $k => $v) {
-				$this->addScript($k, $v, array('baseUrl' => ''));
-			}*/
 			// add custom js to template
 			$this->addScript('cookieConsent', 'https://lifp.de/assets/cookieConsentBannerStudy.min.js', array('baseUrl' => ''));
 			$this->addScript('default', 'https://www.lifp.de/assets/psychopen/ojs_3_2/default.js', array('baseUrl' => ''));
-			//$this->addScript('default', 'js/default.js');
+			// $this->addScript('default', 'js/default.js');
 			// add primary user to template (displayed in header)
 			$this->addMenuArea(array('primary', 'user'));
 			// template option: color scheme/style selector
@@ -282,8 +261,7 @@ class PsychOpenThemePlugin extends ThemePlugin
 			);
 			$templateMgr->assign('issues_full', iterator_to_array($publishedIterator));
 		}
-		$imageUrl = $request->getBaseUrl() .'/'.$this->getPluginPath()."/images/";
-
+		$imageUrl = $request->getBaseUrl().'/'.$this->getPluginPath()."/images/";
 		$templateMgr->assign(
 			array(
 				'imageURL' => $imageUrl,
