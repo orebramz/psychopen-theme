@@ -281,12 +281,7 @@ class PsychOpenThemePlugin extends ThemePlugin
 			);
 			$templateMgr->assign('issues_full', iterator_to_array($publishedIterator));
 		}
-		// used for journals with url rewrite!!!
-		$uriParts = explode('/', $_SERVER['REQUEST_URI']);
-		$imageUrl = '/'.$this->getPluginPath()."/images/";
-		if (sizeof($uriParts) > 2 && $uriParts[1] != 'index.php') {
-			$imageUrl = "/".$uriParts[1].$imageUrl;
-		}
+		$imageUrl = $request->getBaseUrl() .'/'.$this->getPluginPath()."/images/";
 
 		$templateMgr->assign(
 			array(

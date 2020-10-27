@@ -3,8 +3,8 @@
 <version>
 	<application>psychopen</application>
 	<type>plugins.themes</type>
-	<release>1.0.0.2</release>
-	<date>2019-05-14</date>
+	<release>3.2.0.2</release>
+	<date>2020-10-27</date>
 	<lazy-load>0</lazy-load>
 	<class>PsychOpenThemePlugin</class>
 </version>
