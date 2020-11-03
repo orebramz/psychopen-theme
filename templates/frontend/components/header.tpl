@@ -64,7 +64,7 @@
                         <img id="providedLogo" src="{$imageURL}Leibniz-Psychology_sw_sm.png" alt="Leibniz Psychology"/>
                     </a>
                 </div>
-                <div class="col-12 col-sm-auto">
+                <div class="col-12 col-sm-auto" id="navigationUserActions">
                     <div class="row float-xl-right float-lg-right float-md-right float-sm-right">
                         {if $currentJournal && sizeof($currentJournal->getSupportedLocaleNames())>1}
                             <div class="col-auto">
