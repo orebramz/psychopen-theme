@@ -457,49 +457,55 @@
 				</div>
 				{* copyright tab *}
 				<div class="tab-pane fade" id="license" role="tabpanel" aria-labelledby="license-tab">
-					{if $licenseUrl}
-						{if $licenseUrl|strstr:"creativecommons.org"}
-							{assign var="myArray" value=$licenseUrl|explode:"/"}
-							<div class="row">
-								<div class="col text-center">
-									<img class="mt-2 mb-2" src="https://licensebuttons.net/l/{$myArray[4]}/{$myArray[5]}/88x31.png"
-									     alt="CC {$myArray[4]} {$myArray[5]} License"/>
+					{if $currentContext->getLocalizedData('licenseTerms') || $publication->getData('licenseUrl')}
+						{if $publication->getData('licenseUrl')}
+							{if $publication->getData('licenseUrl')|strstr:"creativecommons.org"}
+								<p>{translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}</p>
+								{assign var="myArray" value=$publication->getData('licenseUrl')|explode:"/"}
+								<div class="row">
+									<div class="col text-center">
+										<img class="mt-2 mb-2" src="https://licensebuttons.net/l/{$myArray[4]}/{$myArray[5]}/88x31.png"
+										     alt="CC {$myArray[4]} {$myArray[5]} License"/>
+									</div>
 								</div>
-							</div>
-							This work is licensed under a
-							<a href="{$licenseUrl|escape}">
-								Creative Commons
-								{if $licenseUrl|strstr:"/by-sa/"}
-									Attribution ShareAlike (CC BY-SA)
-								{elseif $licenseUrl|strstr:"/by-nd/"}
-									Attribution-NoDerivs (CC BY-ND)
-								{elseif $licenseUrl|strstr:"/by-nc/"}
-									Attribution-NonCommercial (CC BY-NC)
-								{elseif $licenseUrl|strstr:"/by-nc-sa/"}
-									Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
-								{elseif $licenseUrl|strstr:"/by-nc-nd/"}
-									Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)
-								{elseif $licenseUrl|strstr:"/by/"}
-									Attribution (CC BY)
+								This work is licensed under a
+								<a href="{$publication->getData('licenseUrl')|escape}">
+									Creative Commons
+									{if $publication->getData('licenseUrl')|strstr:"/by-sa/"}
+										Attribution ShareAlike (CC BY-SA)
+									{elseif $publication->getData('licenseUrl')|strstr:"/by-nd/"}
+										Attribution-NoDerivs (CC BY-ND)
+									{elseif $publication->getData('licenseUrl')|strstr:"/by-nc/"}
+										Attribution-NonCommercial (CC BY-NC)
+									{elseif $publication->getData('licenseUrl')|strstr:"/by-nc-sa/"}
+										Attribution-NonCommercial-ShareAlike (CC BY-NC-SA)
+									{elseif $publication->getData('licenseUrl')|strstr:"/by-nc-nd/"}
+										Attribution-NonCommercial-NoDerivs (CC BY-NC-ND)
+									{elseif $publication->getData('licenseUrl')|strstr:"/by/"}
+										Attribution (CC BY)
+									{/if}
+									{$myArray[5]} International License.
+								</a>
+							{elseif $ccLicenseBadge}
+								{if $publication->getLocalizedData('copyrightHolder')}
+									<p>{translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}</p>
 								{/if}
-								{$myArray[5]} International License.
-							</a>
+								{$ccLicenseBadge}
+							{else}
+								<a href="{$publication->getData('licenseUrl')|escape}">
+									{if $copyrightHolder}
+										{translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}
+									{else}
+										{translate key="submission.license"}
+									{/if}
+								</a>
+							{/if}
 						{else}
-							<a href="{$licenseUrl|escape}">
-								{if $copyrightHolder}
-									{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder copyrightYear=$copyrightYear}
-								{else}
-									{translate key="submission.license"}
-								{/if}
-							</a>
+							{translate key="submission.copyrightStatement" copyrightHolder=$publication->getLocalizedData('copyrightHolder') copyrightYear=$publication->getData('copyrightYear')}
+							<br/>
+							<br/>
 						{/if}
-						{*{if $ccLicenseBadge}
-							{$ccLicenseBadge}
-						{/if}*}
-					{elseif $copyright}
-						{$copyright}
-					{else}
-						{translate key="submission.copyrightStatement" copyrightHolder=$copyrightHolder[$publication->getData('locale')] copyrightYear=$copyrightYear}
+						{$currentContext->getLocalizedData('licenseTerms')}
 					{/if}
 				</div>
 				<div class="tab-pane fade" id="impact" role="tabpanel" aria-labelledby="impact-tab">
