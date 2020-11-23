@@ -17,6 +17,7 @@
     <message key="plugins.themes.psychOpen.option.scheme.spb">Social Psychological Bulletin (SPB)</message>
     <message key="plugins.themes.psychOpen.option.scheme.ps">Personality Science (PS)</message>
     <message key="plugins.themes.psychOpen.option.scheme.sotrap">Sexual Offending (SOTRAP)</message>
+	<message key="plugins.themes.psychOpen.option.scheme.jspp">Journal of Social and Political Psychology (JSPP)</message>
     <message key="plugins.themes.psychOpen.option.scheme.qcmb">Quantitative and Computational Methods in Behavioral Sciences (QCMB)</message>
     <message key="plugins.themes.psychOpen.option.header.logo">Header Image</message>
     <message key="plugins.themes.psychOpen.option.header.logo.desc">Laden Sie ein Header Logo in den Public Ordner des OJS und tragen Sie hier den Namen der Datei rein.</message>
