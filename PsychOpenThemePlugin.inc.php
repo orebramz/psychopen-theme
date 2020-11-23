@@ -80,6 +80,7 @@ class PsychOpenThemePlugin extends ThemePlugin
 						'sotrap' => 'plugins.themes.psychOpen.option.scheme.sotrap',
 						'spb' => 'plugins.themes.psychOpen.option.scheme.spb',
 						'jbdgm' => 'plugins.themes.psychOpen.option.scheme.jbdgm',
+						'jspp' => 'plugins.themes.psychOpen.option.scheme.jspp',
 					),
 				)
 			);
