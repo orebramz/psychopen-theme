@@ -38,4 +38,13 @@
         </article>
     </div>
 </div>
+<script>
+	document.querySelector("#article-html-frame").addEventListener("load", function() {
+		let innerDoc = this.contentDocument || this.contentWindow.document
+		let embedScriptEl = innerDoc.createElement('script');
+		embedScriptEl.src = 'https://hypothes.is/embed.js';
+		embedScriptEl.setAttribute("async", "async");
+		innerDoc.head.appendChild(embedScriptEl);
+	});
+</script>
 {include file="frontend/components/footer.tpl"}
