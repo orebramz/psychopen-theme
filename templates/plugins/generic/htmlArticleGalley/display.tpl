@@ -1,6 +1,6 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedTitle()|escape}
 {capture assign="parentUrl"}{url page="article" op="view" path=$article->getBestArticleId($currentJournal)}{/capture}
-
+<script src="https://hypothes.is/embed.js" async></script>
 <div id="main-content" class="article-full-tpl">
     <div class="row justify-content-center mb-1">
         <div class="col-12">
@@ -44,8 +44,4 @@
         </article>
     </div>
 </div>
-<script src="https://hypothes.is/embed.js" async></script>
-
-
-
 {include file="frontend/components/footer.tpl"}
