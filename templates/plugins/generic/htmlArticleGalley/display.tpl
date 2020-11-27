@@ -1,6 +1,6 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedTitle()|escape}
 {capture assign="parentUrl"}{url page="article" op="view" path=$article->getBestArticleId($currentJournal)}{/capture}
-
+<script src="https://hypothes.is/embed.js" async></script>
 <div id="main-content" class="article-full-tpl">
     <div class="row justify-content-center mb-1">
         <div class="col-12">
@@ -38,14 +38,9 @@
 
                     <iframe enable-annotation id="article-html-frame" class="article-full-frame" {*oncontextmenu="return false;"*}
                             src="{url page="article" op="download"  path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId() inline=true}"></iframe>
-
                 </div>
             </div>
         </article>
     </div>
 </div>
-<script src="https://hypothes.is/embed.js" async></script>
-
-
-
 {include file="frontend/components/footer.tpl"}
