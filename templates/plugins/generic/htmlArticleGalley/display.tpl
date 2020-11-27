@@ -1,6 +1,5 @@
 {include file="frontend/components/header.tpl" pageTitleTranslated=$article->getLocalizedTitle()|escape}
 {capture assign="parentUrl"}{url page="article" op="view" path=$article->getBestArticleId($currentJournal)}{/capture}
-<script src="https://hypothes.is/embed.js" async></script>
 <div id="main-content" class="article-full-tpl">
     <div class="row justify-content-center mb-1">
         <div class="col-12">
@@ -35,13 +34,20 @@
                             <i class="fas fa-times-circle"></i>&nbsp;{translate key="plugins.themes.psychOpen.article.view.full.close"}
                         </button>
                     </div>
-
-                    <iframe enable-annotation id="article-html-frame" class="article-full-frame" {*oncontextmenu="return false;"*}
+                    <iframe id="article-html-frame" class="article-full-frame" {*oncontextmenu="return false;"*}
                             src="{url page="article" op="download"  path=$article->getBestArticleId()|to_array:$galley->getBestGalleyId() inline=true}"></iframe>
-
                 </div>
             </div>
         </article>
     </div>
 </div>
+<script>
+	document.querySelector("#article-html-frame").addEventListener("load", function() {
+		let innerDoc = this.contentDocument || this.contentWindow.document
+		let embedScriptEl = innerDoc.createElement('script');
+		embedScriptEl.src = 'https://hypothes.is/embed.js';
+		embedScriptEl.setAttribute("async", "async");
+		innerDoc.head.appendChild(embedScriptEl);
+	});
+</script>
 {include file="frontend/components/footer.tpl"}
