@@ -35,7 +35,7 @@ _paq.push(['enableLinkTracking']);
 })();
 
 function pushGoal(event, type, val) {
-    console.log(_paq);
+    //console.log(_paq);
     if (_paq)
         _paq.push('trackEvent', document.domain, event, type, val);
 }
