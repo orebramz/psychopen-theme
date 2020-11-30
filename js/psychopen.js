@@ -24,20 +24,20 @@ _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
 (function () {
     var u = "https://pwk.clubs-project.eu/";
-    _paq.push(['setTrackerUrl', u + 'log.php']);
+    _paq.push(['setTrackerUrl', u + 'matomo.php']);
     _paq.push(['setSiteId', '12']);
     var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
     g.type = 'text/javascript';
     g.async = true;
     g.defer = true;
-    g.src = u + 'log.js';
+    g.src = u + 'matomo.js';
     s.parentNode.insertBefore(g, s);
 })();
 
+
 function pushGoal(event, type, val) {
-    console.log(_paq);
     if (_paq)
-        _paq.push('trackEvent', document.domain, event, type, val);
+        _paq.push(['trackEvent', document.domain, event, type, val]);
 }
 
 

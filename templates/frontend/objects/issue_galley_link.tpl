@@ -62,8 +62,7 @@
 {/if}
 {* Don't be frightened. This is just a link *}
 <a class="{$custom_classes} galley-link" role="button" href="{url page=$page op=$view path=$parentId|to_array:$galley->getBestGalleyId($currentJournal)}" aria-label="{$type}"
-   onclick="pushGoal('Galley', '{$galley->getLabel()|escape}', 1);">
-
+   onclick="pushGoal('{$page}_{$galley->getLabel()|escape|upper}_action', '{$parentId}', 1);">
     {* Add some screen reader text to indicate if a galley is restricted *}
     {if $restricted}
         <i class="fas fa-lock" aria-hidden="true"></i>
