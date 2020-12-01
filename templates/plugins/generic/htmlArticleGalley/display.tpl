@@ -48,7 +48,15 @@
 		embedScriptEl.src = 'https://hypothes.is/embed.js';
 		embedScriptEl.setAttribute("async", "async");
 		innerDoc.head.appendChild(embedScriptEl);
+		{if $article}
+		let added = false;
+		this.addEventListener("mouseenter", function () {
+			if (!added) {
+				added = true;
+				pushGoal('article_HTML_view', '{$article->getBestArticleId()}', 1);
+			}
+		})
+		{/if}
 	});
-	pushGoal('Article_View', 'HTML', {$article->getId()});
 </script>
 {include file="frontend/components/footer.tpl"}
