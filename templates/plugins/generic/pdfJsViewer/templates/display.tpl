@@ -30,30 +30,21 @@
 							<i class="fas fa-times-circle"></i>&nbsp;{translate key="plugins.themes.psychOpen.article.view.full.close"}
 						</button>
 					</div>
-					<iframe id="article-html-frame" class="article-full-frame" {*onload="resizeIframe(this)"*} oncontextmenu="return false;"
+					<iframe id="article-pdf-frame" class="article-full-frame" oncontextmenu="return false;"
+					        {if $article}data-article="{$article->getBestArticleId()}"{/if}
 					        src="{$pluginUrl}/pdf.js/web/viewer.html?file={$pdfUrl|escape:"url"}"></iframe>
 				</div>
 			</div>
 		</article>
 	</div>
-	<button onclick="_paq.push(['trackEvent', 'Contact', 'Email Link Click', 'name@example.com']);">sdfsfdsfd</button>
 </div>
 <script>
-	document.querySelector("#article-html-frame").addEventListener("load", function () {
+	document.querySelector("#article-pdf-frame").addEventListener("load", function () {
 		let innerDoc = this.contentDocument || this.contentWindow.document
 		let embedScriptEl = innerDoc.createElement('script');
 		embedScriptEl.src = 'https://hypothes.is/embed.js';
 		embedScriptEl.setAttribute("async", "async");
 		innerDoc.head.appendChild(embedScriptEl);
-		{if $article}
-			let added = false;
-			this.addEventListener("mouseenter", function () {
-				if (!added) {
-					added = true;
-					pushGoal('article_PDF_view', '{$article->getBestArticleId()}', 1);
-				}
-			})
-		{/if}
 	});
 </script>
 {include file="frontend/components/footer.tpl"}
