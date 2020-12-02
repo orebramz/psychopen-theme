@@ -5,7 +5,6 @@
 // @code_url https://www.lifp.de/assets/scripts/popperjs/1.16.1/popper.min.js
 // @code_url https://www.lifp.de/assets/scripts/bootstrap/4.5.2/js/bootstrap.min.js
 // @code_url https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js
-// @code_url https://badge.dimensions.ai/badge.js
 // ==/ClosureCompiler==
 
 /* Diese JavaScript Datei dient nur für die Entwicklung.
