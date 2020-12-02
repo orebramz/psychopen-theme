@@ -41,7 +41,7 @@
 {if $pubId}
 	{assign var="doiUrl" value=$pubIdPlugin->getResolvingURL($currentJournal->getId(), $pubId)|escape}
 {/if}
-<article class="article-details-tpl">
+<article class="article-details-tpl" id="article-abstract-view" {if $article}data-article="{$article->getBestArticleId()}"{/if}>
 	<div class="row mt-4">
 		<div class="col mb-4">
 			<header class="article-details-header mb-3 border-bottom">
@@ -527,10 +527,11 @@
 									<div class="col-6 text-center">
 										<a href="https://plu.mx/plum/a/?doi={$pubId}" data-popup="top" data-size="large" class="plumx-plum-print-popup"
 										   data-site="plum"></a>
-										<script type="text/javascript" src="//cdn.plu.mx/widget-popup.js"></script>
+										<script async type="text/javascript" src="//cdn.plu.mx/widget-popup.js"></script>
 									</div>
 									<div class="col-6 text-center">
 										<div class="__dimensions_badge_embed__ text-center" data-doi="{$pubId}" data-legend="hover-top"></div>
+										<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
 									</div>
 								</div>
 							</li>
