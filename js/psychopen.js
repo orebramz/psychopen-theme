@@ -16,11 +16,20 @@
    plumX kompiliert mit Fehler! https://cdn.plu.mx/widget-popup.js Deswegen erst einmal nicht in code_url.
    */
 <!-- Matomo -->
+let pdfFrame = $('#article-pdf-frame');
+let htmlFrame = $('#article-html-frame');
+let abstractElem = $('#article-abstract-view');
+
 let _paq = window._paq || [];
 disableTracking(_paq);
 _paq.push(["setDocumentTitle", document.domain.split('.')[0] + " - " + document.title]);
 _paq.push(['trackPageView']);
 _paq.push(['enableLinkTracking']);
+if ((pdfFrame !== null && pdfFrame !== undefined) ||
+	(htmlFrame !== null && htmlFrame !== undefined) ||
+	(abstractElem !== null && abstractElem !== undefined)) {
+	_paq.push(['enableHeartBeatTimer', 30]);
+}
 (function () {
 	var u = "https://pwk.clubs-project.eu/";
 	_paq.push(['setTrackerUrl', u + 'matomo.php']);
@@ -33,12 +42,24 @@ _paq.push(['enableLinkTracking']);
 	s.parentNode.insertBefore(g, s);
 })();
 
+if (pdfFrame !== null && pdfFrame !== undefined && $(pdfFrame).data('article')) {
+	pushGoal('article_PDF_view', $(pdfFrame).data('article'), 1);
+}
+
+if (htmlFrame !== null && htmlFrame !== undefined && $(htmlFrame).data('article')) {
+	pushGoal('article_HTML_view', $(htmlFrame).data('article'), 1);
+}
+
+if (abstractElem !== null && abstractElem !== undefined && $(abstractElem).data('article')) {
+	pushGoal('article_ABSTRACT_view', $(abstractElem).data('article'), 1);
+}
 
 function pushGoal(event, type, val) {
 	if (_paq)
 		_paq.push(['trackEvent', document.domain, event, type, val]);
 }
 
+<!-- Matomo -->
 
 $(document).ready(function () {
 	$('#article-full').click(function () {
@@ -102,24 +123,6 @@ $(document).ready(function () {
 	$('.copy_to_clip_li').mouseleave(function () {
 		$(this).find('.copy_to_clip_btn').hide();
 	});
-
-	let pdfFrame = $('#article-pdf-frame');
-	if (pdfFrame !== null && pdfFrame !== undefined && $(pdfFrame).data('article')) {
-		pushGoal('article_PDF_view', $(pdfFrame).data('article'), 1);
-		_paq.push(['enableHeartBeatTimer', 30]);
-	}
-
-	let htmlFrame = $('#article-html-frame');
-	if (htmlFrame !== null && htmlFrame !== undefined && $(htmlFrame).data('article')) {
-		pushGoal('article_HTML_view', $(htmlFrame).data('article'), 1);
-		_paq.push(['enableHeartBeatTimer', 30]);
-	}
-
-	let abstractElem = $('#article-abstract-view');
-	if (abstractElem !== null && abstractElem !== undefined && $(abstractElem).data('article')) {
-		pushGoal('article_ABSTRACT_view', $(abstractElem).data('article'), 1);
-		_paq.push(['enableHeartBeatTimer', 30]);
-	}
 });
 
 
