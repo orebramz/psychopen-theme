@@ -106,16 +106,19 @@ $(document).ready(function () {
 	let pdfFrame = $('#article-pdf-frame');
 	if (pdfFrame !== null && pdfFrame !== undefined && $(pdfFrame).data('article')) {
 		pushGoal('article_PDF_view', $(pdfFrame).data('article'), 1);
+		_paq.push(['enableHeartBeatTimer', 30]);
 	}
 
 	let htmlFrame = $('#article-html-frame');
 	if (htmlFrame !== null && htmlFrame !== undefined && $(htmlFrame).data('article')) {
 		pushGoal('article_HTML_view', $(htmlFrame).data('article'), 1);
+		_paq.push(['enableHeartBeatTimer', 30]);
 	}
 
 	let abstractElem = $('#article-abstract-view');
 	if (abstractElem !== null && abstractElem !== undefined && $(abstractElem).data('article')) {
 		pushGoal('article_ABSTRACT_view', $(abstractElem).data('article'), 1);
+		_paq.push(['enableHeartBeatTimer', 30]);
 	}
 });
 
