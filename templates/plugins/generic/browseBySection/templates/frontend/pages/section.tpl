@@ -23,8 +23,6 @@
 
 <div id="main-content" class="page page_section page_section_{$sectionPath|escape}">
 
-
-<div id="main-content">
 	{include file="frontend/components/breadcrumbs.tpl" currentTitle=$section->getLocalizedTitle() breadcrumbtype="issue"}
 
 	<h1 class="page_title">
