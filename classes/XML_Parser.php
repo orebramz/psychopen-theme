@@ -73,24 +73,29 @@ class XML_Parser
     {
         $this->xml_data = array();
         $fileContents = file_get_contents($xml_url);
-        $fileContents = str_ireplace(array('&nbsp;'), array(' '), $fileContents);
-        $fileContents = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $fileContents);
-        $xml = simplexml_load_string($fileContents);
-        $this->xml_data["locale"] = $loc;
-        foreach ($this->xpath_array as $k => $v) {
-            if ($k == 'authors') {
-                $val = $this->getAuthors($xml, $v);
-                $this->xml_data[$k] = $val;
-            } else if ($k == 'supplements') {
-                $suppList = $this->getSupplementaryData($xml, $v);
-                $this->xml_data[$k] = $suppList;
-            } else {
-                $val = $this->getSingleValueFromXML($xml, $v);
-                $this->xml_data[$k] = $val;
-            }
+        if($fileContents) {
+	        $fileContents = str_ireplace(array('&nbsp;'), array(' '), $fileContents);
+	        $fileContents = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $fileContents);
+	        $xml = simplexml_load_string($fileContents);
+	        $this->xml_data["locale"] = $loc;
+	        foreach ($this->xpath_array as $k => $v) {
+		        if ($k == 'authors') {
+			        $val = $this->getAuthors($xml, $v);
+			        $this->xml_data[$k] = $val;
+		        } else {
+			        if ($k == 'supplements') {
+				        $suppList = $this->getSupplementaryData($xml, $v);
+				        $this->xml_data[$k] = $suppList;
+			        } else {
+				        $val = $this->getSingleValueFromXML($xml, $v);
+				        $this->xml_data[$k] = $val;
+			        }
+		        }
+	        }
+	        if (sizeof($this->xml_data) > 0) {
+		        return true;
+	        }
         }
-        if (sizeof($this->xml_data) > 0)
-            return true;
         return false;
     }
 

@@ -56,6 +56,12 @@ msgstr "Personality Science (PS)"
 msgid "plugins.themes.psychOpen.option.scheme.sotrap"
 msgstr "Sexual Offending (SOTRAP)"
 
+msgid "plugins.themes.psychOpen.option.scheme.jspp"
+msgstr "Journal of Social and Political Psychology (JSPP)"
+
+msgid "plugins.themes.psychOpen.option.scheme.jnc"
+msgstr "Journal of Numerical Cognition (JNC)"
+
 msgid "plugins.themes.psychOpen.option.scheme.qcmb"
 msgstr "Quantitative and Computational Methods in Behavioral Sciences (QCMB)"
 

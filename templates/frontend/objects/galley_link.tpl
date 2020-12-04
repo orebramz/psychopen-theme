@@ -58,9 +58,8 @@
 {/if}
 {if $page == 'issue' || $galley->getLabel()|escape|upper == "PDF" || $galley->getLabel()|escape|upper == "HTML" || $galley->getLabel()|escape|upper == "XML"}
 {* Don't be frightened. This is just a link *}
-    <a class="{$custom_classes} galley-link {if $restricted} restricted{/if}" role="button" href="{url page=$page op="view" path=$path}" {if $labelledBy} aria-labelledby={$labelledBy}{/if}
-       onclick="pushGoal('Galley', '{$galley->getLabel()|escape}', 1);">
-
+    <a class="{$custom_classes} galley-link {if $restricted} restricted{/if}" role="button" href="{url page=$page op="view" path=$path}" {if $labelledBy} aria-labelledby="{$labelledBy}"{/if}
+        onclick="pushGoal('{$page}_{if $page=='article'}{$galley->getLabel()|escape|upper}_{/if}action', '{$parentId}', 1);">
         {* Add some screen reader text to indicate if a galley is restricted *}
         {if $restricted}
             <i class="fas fa-lock" aria-hidden="true"></i>
