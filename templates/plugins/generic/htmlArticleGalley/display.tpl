@@ -16,7 +16,7 @@
 							{assign var="hasArticleAccess" value=1}
 						{/if}
 						{include file="frontend/objects/galley_link.tpl" parent=$article hasAccess=$hasArticleAccess download=true custom_classes="btn btn-secondary btn-download"
-						purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency') hasAccess=$hasArticleAccess}
+						purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency') hasAccess=true}
 					{/if}
 				{/foreach}
 				<button id="article-full" class="btn btn-secondary btn-download">
