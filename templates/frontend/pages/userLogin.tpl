@@ -23,23 +23,32 @@
                     {translate key=$loginMessage}
                 </div>
             {/if}
-
-            {if $currentJournal && $currentJournal->getId() == 15}
-                <div class="alert alert-info" role="alert">
-                   <div>The <em>Social Pschological Bulletin (SPB)</em> has moved to a new journal management system. If you already have an user account for SPB you need to follow the <a href="/index.php/cpe/login/lostPassword">"Forgot your password?"</a> link, to receive a new password for your account at the new system. If you need further support, contact <strong><a href="mailto:support@spb.psychopen.eu">support@spb.psychopen.eu</a></strong>. Sorry for the inconvenience!</div>
-                </div>
-            {/if}
-            {if $currentJournal && $currentJournal->getId() == 17}
-                <div class="alert alert-info" role="alert">
-                   <div><em>Clinical Psychology in Europe (CPE)</em> has moved to a new journal management system. If you already have an user account for CPE you need to follow the <strong><a href="/index.php/cpe/login/lostPassword">"Forgot your password?"</a></strong> link, to receive a new password for your account at the new system. If you need further support, contact <strong><a href="mailto:support@cpe.psychopen.eu">support@cpe.psychopen.eu</a></strong>. Sorry for the inconvenience!</div>
-                </div>
-            {/if}
-
-
-
-
-
-            
+	        {* TODO Anfang Informations Block über Umzug! Entfernen wenn alles fertig ist *}
+	        {*
+			{if $currentJournal && $currentJournal->getId() == 15}
+				<div class="alert alert-info" role="alert">
+				   <div>The <em>Social Pschological Bulletin (SPB)</em> has moved to a new journal management system. If you already have an user account for SPB you need to follow the <a href="/index.php/cpe/login/lostPassword">"Forgot your password?"</a> link, to receive a new password for your account at the new system. If you need further support, contact <strong><a href="mailto:support@spb.psychopen.eu">support@spb.psychopen.eu</a></strong>. Sorry for the inconvenience!</div>
+				</div>
+			{/if}
+			*}
+	        {*
+			{if $currentJournal && $currentJournal->getId() == 17}
+				<div class="alert alert-info" role="alert">
+				   <div><em>Clinical Psychology in Europe (CPE)</em> has moved to a new journal management system. If you already have an user account for CPE you need to follow the <strong><a href="/index.php/cpe/login/lostPassword">"Forgot your password?"</a></strong> link, to receive a new password for your account at the new system. If you need further support, contact <strong><a href="mailto:support@cpe.psychopen.eu">support@cpe.psychopen.eu</a></strong>. Sorry for the inconvenience!</div>
+				</div>
+			{/if}
+			*}
+	        {if $currentJournal && $currentJournal->getId() == 23}
+		        <div class="alert alert-info" role="alert">
+			        <div><strong>Authors:</strong> <em>Checking the status of your submission?</em><br /> Please note: This is the login page of the <em>new</em> website of the <em>Journal of Social and Political Psychology</em> (JSPP). If you submitted a paper to the <em>old</em> system (before December 01, 2020) you need to log into the old website here: <strong><a href="https://jspp-old.psychopen.eu/login/">jspp-old.psychopen.eu/login</a></strong>. If you need further support, contact <strong><a href="mailto:support@jspp.psychopen.eu">support@jspp.psychopen.eu</a></strong>. Apologies for the inconvenience!</div>
+		        </div>
+	        {/if}
+	        {if $currentJournal && $currentJournal->getId() == 25}
+		        <div class="alert alert-info" role="alert">
+			        <div><strong>Authors:</strong> <em>Checking the status of your submission?</em><br />Please note: This is the login page of the <em>new</em> website of the <em>Journal of Numerical Cognition</em> (JNC). If you submitted a paper to the <em>old</em> system (before January 20, 2021) you need to log into the old website here: <strong><a href="https://jnc-old.psychopen.eu/login/">jnc-old.psychopen.eu/login</a></strong>. If you need further support, contact <strong><a href="mailto:support@jnc.psychopen.eu">support@jnc.psychopen.eu</a></strong>. Apologies for the inconvenience!</div>
+		        </div>
+	        {/if}
+			{* TODO Ende Informations Block über Umzug! *}
             <form class="pkp_form login" id="login" method="post" action="{$loginUrl}">
                 {csrf}
                 <input type="hidden" name="source" value="{$source|strip_unsafe_html|escape}"/>
