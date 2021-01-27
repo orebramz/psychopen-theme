@@ -1,0 +1,96 @@
+/* COLOR Settings*/
+@font-color-light: white;
+@font-color-dark: black;
+@primary-color: rgba(0, 82, 100, 1);
+@primary-color-opacity: rgba(0, 82, 100, 0.2);
+@secondary-color: rgb(173, 97, 22);
+@secondary-color-opacity: rgba(173, 97, 22, 0.2);
+@background-color-bars: #646464;
+
+/* FONT Settings */
+@font-text-body: 'Open Sans', sans-serif;
+@font-headlines: 'Open Sans', sans-serif;
+/*@font-headlines: 'Slabo 27px', serif;*/
+@body-font-size: 14px;
+@body-h1-size: 1.2em;
+@body-h2-size: 1.15em;
+@body-h3-size: 1.1em;
+@body-h4-size: 1.05em;
+@card-h1-size: 1em;
+@article-h1-size: 1.25em;
+@article-h2-size: 1.15em;
+
+/*PsychOpen Banner Settings*/
+@po-banner-bg-color: black;
+@po-banner-font-size: 14px;
+@po-banner-padding: 10px 10px;
+@po-banner-image-height: 35px;
+
+/*LOGO Settings*/
+@logo-bg-color: @primary-color;
+@logo-image-height: 100%;
+@logo-image-margin-top: 20px;
+@logo-image-margin-bottom: 5px;
+
+/*NAVBAR Settings*/
+@navbar-bg-color: @primary-color;
+@navbar-font-color: @font-color-light;
+@navbar-font-size: 14px;
+@navbar-hoover-color: @secondary-color;
+@navbar-hoover-font-color: @font-color-light;
+@navbar-padding: 0px;
+@navbar-item-margin: 5px 5px;
+@search-font-color: @font-color-light;
+@search-background-color: @secondary-color;
+@search-font-color-hover: @font-color-light;
+@search-background-color-hover: @secondary-color-opacity;
+
+/*CONTENT Settings*/
+@main-content-min-height: 70vh;
+@content-link-color: @secondary-color;
+@content-link-color-hover: @primary-color;
+
+/*Article Bar Settings*/
+@article-bar-background: @font-color-light;
+@article-bar-font-color: @font-color-dark;
+@article-bar-link-color: @primary-color;
+@article-bar-link-color-hoover: @secondary-color;
+
+/* FOOTER SETTING */
+@footer-height: 80px;
+@footer-background-color: @primary-color;
+@footer-font-color: @font-color-light;
+@footer-link-color: @font-color-light;
+@footer-font-size: 1em;
+
+/* SITE-WIDTH Settings*/
+@hide-items-at: 1250px;
+.showHideLG {
+  @media (max-width: @hide-items-at) {
+	display: none;
+  }
+  @media (min-width: @hide-items-at) {
+	display: flex;
+  }
+}
+
+.pkp_structure_content,
+.navbar-container,
+.logo-container,
+.footer-container,
+.search-box-container {
+  @media (min-width: 1920px) {
+	max-width: 1680px;
+  }
+  @media (min-width: 1400px) and (max-width: 1920px) {
+	max-width: 70%;
+  }
+  @media (min-width: 992px) and (max-width: 1400px) {
+	max-width: 95%;
+  }
+  @media (min-width: 0px) and (max-width: 992px) {
+	max-width: 100%;
+  }
+}
+
+

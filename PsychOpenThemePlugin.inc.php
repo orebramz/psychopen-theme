@@ -100,6 +100,7 @@ class PsychOpenThemePlugin extends ThemePlugin
                 'spb' => 'plugins.themes.psychOpen.option.scheme.spb',
                 'jbdgm' => 'plugins.themes.psychOpen.option.scheme.jbdgm',
 	            'jspp' => 'plugins.themes.psychOpen.option.scheme.jspp',
+	            'jnc' => 'plugins.themes.psychOpen.option.scheme.jnc',
             ),
         ));
         // choose css style by selection above. the folder name must match the option key. default is fallback option if none selected
