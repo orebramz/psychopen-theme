@@ -92,8 +92,22 @@
     <message key="plugins.themes.psychOpen.footer.links">Links</message>
     <!-- Submission -->
     <message key="plugins.themes.psychOpen.submission.new">Neue Einreichung</message>
+    <message key="plugins.themes.psychOpen.submission.submit.submissionCompleteThanks">Vielen Dank für Ihr Interesse an einer Veröffentlichung bei</message>
+    <message key="plugins.themes.psychOpen.submission.submit.whatNext.description">Die Zeitschrift wurde über Ihre Einreichung informiert und Sie haben eine Bestätigung per E-Mail erhalten. Sobald die/der Redakteur/in die Einreichung begutachtet hat, werden Sie benachrichtigt.</message>        
     <!---->
     <message key="plugins.themes.psychOpen.citations">Zitationen</message>
     <message key="plugins.themes.psychOpen.impact">Impact</message>
     <message key="search.no.Results">Es wurden keine Suchergebnisse gefunden! Bitte geben Sie einen Suchbegriff in das Suchfeld ein!</message>
+    <!-- Journal Specific Messages: PS-->
+    <message key="plugins.themes.psychOpen.ps.feedback"><![CDATA[
+        <p>We strive to continually improve, and thus your experiences with the journal and its submission portal are important to us.<br /> 
+        We would be thankful if you could leave us your feedback here (takes approx. 3-6 minutes):<br /> 
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdq46lmFkdmM-ZhlaB22YKuua9kssJmIXFUNCvTDN6aiQGUZw/viewform">Author Submission Feedback Form</a>
+        ]]></message>
+     <message key="plugins.themes.psychOpen.ps.reviewer.complete.whatNext"><![CDATA[   
+     <p><strong>THANK YOU very much for completing your review of this work.</strong></br> 
+     This is to notify you that your review has been submitted successfully and that you can close this browser tab if you wish. Alternatively, you can also add a discussion below that allows you to engage with the handling editor should you have any lingering questions or concerns. 
+     We sincerely appreciate your contribution to the quality of the work that we publish and hope that we may call upon you in the future again.</p> 
+     <p>To improve the experience of our reviewers, we have compiled a short survey (approx. 3-5 minutes). You can access it here: <a target=">_blank" href="https://forms.gle/W468fZR2QXEndqRUA">Reviewer Feedback Form</a>.<br />We would appreciate your feedback and thank you for letting us know your thoughts and ideas.</p>
+        ]]></message>     
 </locale>
