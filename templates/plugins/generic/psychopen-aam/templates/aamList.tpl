@@ -36,8 +36,8 @@
 									</div>
 									<div class="pa-link-query-no-result" style="display: none">
 										{translate key="plugins.generic.aam.link.pa.pr"}:
-										Not available (<a href="#" data-toggle="tooltip"
-										                  title="The authors have not yet made their AAM version available via PsychArchives (Authors: Help on submitting the AAM version to PsychArchives is available <a href='#' target='_blank'>here</a>)">
+										Not available (<a href="#" data-toggle="tooltip" onclick="return false"
+										                  title="The authors have not yet published their AAM version with <a href='https://www.psycharchives.org' target='_blank'>PsychArchives</a>.">
 											Why?</a> )
 									</div>
 								</div>
