@@ -34,7 +34,7 @@
                     <ul class="list-group list-group-flush">
                         {foreach from=$i item="article"}
                             {assign var=issue value=$issues[$article->getIssueId()]}
-                            <li class="list-group-item">{include file="frontend/objects/article_summary.tpl" article=$article}</li>
+                            <li class="list-group-item">{include file="frontend/objects/article_summary.tpl" article=$article hasAccess=1 }</li>
                         {/foreach}
                     </ul>
                 </div>
