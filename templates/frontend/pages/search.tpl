@@ -147,7 +147,7 @@
             {else}
                 <ul class="list-group list-group-flush">
                     {iterate from=results item=result}
-                        <li class="list-group-item">{include file="frontend/objects/article_summary.tpl" article=$result.publishedArticle showDatePublished=true hideGalleys=false}</li>
+                        <li class="list-group-item">{include file="frontend/objects/article_summary.tpl" article=$result.publishedArticle showDatePublished=true hideGalleys=false hasAccess=1 }</li>
                     {/iterate}
                 </ul>
                 {* Results pagination *}
