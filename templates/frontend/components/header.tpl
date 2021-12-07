@@ -49,20 +49,15 @@
             <div id="psychOpenPageHeader" class="row align-items-center">
                 <div class="col-12 col-sm-auto mb-3 mb-sm-0">
                     <a class="" href="https://www.psychOpen.eu">
-                        <img id="psychOpenLogo" src="{$imageURL}PsychOpen_GOLD_sm.png" alt="PsychOpen"/>
+                        <img id="psychOpenLogo" src="https://static.wixstatic.com/media/60b422_ce009b52dd7f43709d5d3dbbbd76dd9d.png/v1/fill/w_306,h_175,al_c,q_85,usm_0.66_1.00_0.01/60b422_ce009b52dd7f43709d5d3dbbbd76dd9d.webp" alt="Ogeesimage"/>
                     </a>
                 </div>
                 <div class="col-auto exploreLinks">
                     <div class="float-md-right float-xl-left">
-                        <a href="https://www.psychOpen.eu/publications/">{translate key="plugins.themes.psychOpen.header.explore"}</a>
-                        |
-                        <a href="https://leibniz-psychology.org/en/services/publication/">{translate key="plugins.themes.psychOpen.header.about"}</a>
+                        <a href="https://https://www.ogeesinstitute.edu.ng/">Explore Ogees Institute</a>
                     </div>
                 </div>
                 <div class="col">
-                    <a class="" href="https://www.leibniz-psychology.org">
-                        <img id="providedLogo" src="{$imageURL}Leibniz-Psychology_sw_sm.png" alt="Leibniz Psychology"/>
-                    </a>
                 </div>
                 <div class="col-12 col-sm-auto" id="navigationUserActions">
                     <div class="row float-xl-right float-lg-right float-md-right float-sm-right">
